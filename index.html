@@ -19,6 +19,8 @@
  
  a {
 	 color: black;
+	 font-size: 30px;
+	 text-decoration: none;
  }
  
  h1 {
@@ -28,6 +30,7 @@
 	 text-decoration: none;
 	 font-weight:normal;
 	 font-style: oblique;
+	 font-size: 50px;
  }
  
  h2 {
@@ -71,15 +74,20 @@
  }
  
  #Content {
-	margin-left: 20%;
-	 
+	margin-left: 0%;
+	text-align: center;
+ }
+ 
+ .twitter-timeline {
+	//float: right;
+	//margin-right: 20%;
  }
 		</style>
 	</head>
 
 	<body>
 		<hr style="width: 400px;margin-top:20px;">
-		<h1 style="margin-top:0px;padding-top:0px;text-align: center;font-size:100px;">E-BREAKEY</h1>
+		<h1 style="margin-top:0px;padding-top:0px;text-align: center;font-size:100px;">E BREAKEY</h1>
 		<hr style="width: 400px;">
 		<div id="Content">
 			
@@ -87,6 +95,26 @@
 			<a href="http://retroverse.github.io/tdos">TDOS Site</a><br>
 			<a href="http://obtusetriangle.wordpress.com">Blog</a><br>
 			<a href="http://obtusetriangle.wordpress.com">Twitter</a><br>
+			<br>
+			<h1>Twitter Feed</h1>
+			<a class="twitter-timeline"
+			   href="https://twitter.com/retr0verse"
+			   data-widget-id="726711212818329601"
+			   data-chrome="nofooter noborders noheader noscrollbar transparent">
+			   >
+				Tweets by @retr0verse
+			</a>
+			<script>
+				!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+				if(!d.getElementById(id)){
+					js=d.createElement(s);
+					js.id=id;
+					js.src=p+"://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js,fjs);
+					}
+				}(document,"script","twitter-wjs");
+			</script>
 		</div>
 	</body>
 
