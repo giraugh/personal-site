@@ -26,7 +26,7 @@ $textCol: darken($darkerCol, 40)
   box-shadow: 0px 0px 19px -1px rgba(66,66,66,0.44)
 
   h2
-    font-size: 1.4vw
+    font-size: 1.6vw
     margin-top: 1.3em
     margin-bottom: .2em
     &:first-child
@@ -41,14 +41,22 @@ $textCol: darken($darkerCol, 40)
     border-radius: 6px !important
     font-weight: bold !important
     vertical-align: middle !important
-    font-size: 1.1em !important
+    font-size: 1.3vw !important
 
-  p, a
-    font-size: 1.2em
-    margin-top: 0.5em
+p, a
+  color: lighten($textCol, 10)
+  font-size: 1.3vw
+  margin-top: 0.5em
+a[href]
+  text-decoration: none
+  font-weight: bold
+  &:hover
+    color: lighten(black, 40)
 
-  li
-    margin-bottom: 0.3em
+
+li
+  margin-bottom: 0.3em
+
 
 
 .column
@@ -62,7 +70,7 @@ $textCol: darken($darkerCol, 40)
   margin-left: 1.5%
 
 .right-textbox
-  width: 50%
+  width: 70%
   padding-left: 2%
 
 .list-title

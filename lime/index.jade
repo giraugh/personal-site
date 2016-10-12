@@ -16,6 +16,8 @@ body
       a(class="list-option", href="#whats-moonshine") - What's MoonShine?
       a(class="list-option", href="#whats-jungle") - What's a Jungle?
       a(class="list-option", href="#what-species-included") - What Species are Included?
+      a(class="list-option", href="#how-do-i-get") - How Do I Get It?
+    //make scrollbar nice and smooth and follow window
     script(src="scrollNav.js", type="text/javascript")
     div(id="right-column", class="box column extend")
       div(id="text-container", class="right-textbox")
@@ -66,3 +68,12 @@ body
                 | position.
             li <code>sprite-states</code>
               p Allows multiple sprites to be easily switched between. i.e <code>run</code> or <code>idle</code>.
+
+        h2(id="how-do-i-get") How Do I Get It?
+        p First you will need git which can be got from <a href="https://git-scm.com/">their site<a>. Then you will need
+          | Lime which can be got <a href="https://github.com/retroverse/Lime-Engine">from github</a>. Then open a command prompt
+          | and run <br /><code>lime version</code>, if it doesn't fail then you are ready to go!
+
+footer
+  // make all links open in a new page
+  script(src="makeLinksNewTab.js", type="text/javascript")
