@@ -1,0 +1,44 @@
+//output: ../$1.html
+html
+  head
+    //font 'lato'
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato")
+
+    //iconic font
+    link(rel="stylesheet", href="site/font-awesome/css/font-awesome.min.css")
+
+    //web styling
+    link(rel="stylesheet", type="text/css", href="site/style/index.min.css")
+
+    //helper for navigation
+    script.
+      function goto(x) {window.location.href = "http://"+x}
+  body
+    .wrapper
+      //page heading
+      h1.title Ewan Breakey
+
+      //social icons
+      .soc-icons
+        a.fa.fa-github.fa-4x(href="http://github.com/retroverse")
+        a.fa.fa-twitter.fa-4x(href="http://twitter.com/retr0verse")
+
+      //Projects
+      .box.projects
+        a
+          h2 Projects
+          p.kg(onclick="goto('tdos.itch.io/knight-game')") Knight Game
+          p.hx(onclick="goto('retroverse.github.io/Hex')") Hex
+          p.le(onclick="goto('github.com/retroverse/LimeEditor')") Lime Editor
+          p.et(onclick="goto('play.google.com/store/apps/details?id=com.tdos.telegram')") Expert Telegram
+          p.gl(onclick="") Galana
+          p.sh(onclick="goto('github.com/retroverse/MoonShine')") Moon Shine
+          p.ve(onclick="goto('github.com/retroverse/Venus')") Venus
+
+
+      //Media
+      .box.media
+        a
+          h2 Media
+          p.ot(onclick="goto('retroverse.github.io/Obtuse-Triangle/site')")
+          p.td(onclick="goto('retroverse.github.io/tdos')")

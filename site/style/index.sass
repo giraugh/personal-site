@@ -1,0 +1,116 @@
+//Class Helpers
+.no-decoration
+  text-decoration: none
+  list-style: none
+
+
+//Main Body
+html
+  font-family: 'Lato', sans-serif
+  color: darken(grey, 20)
+
+  .wrapper
+    //main 'Ewan Breakey' Title
+    h1.title
+      text-align: center
+      font-size: 100px
+      margin: 20px
+
+    //Twitter and github buttons
+    .soc-icons
+      text-align: center
+      a
+        color: darken(grey, 20)
+        text-decoration: none
+        position: relative
+        margin-left: 15px
+        margin-right: 15px
+
+        &:hover
+          color: darken(grey, 10)
+          text-shadow: 0px 3px 5px grey
+
+    //Boxes
+    .box
+      //positioning & size
+      margin: 5%
+      width: 40%
+      float: left
+
+      a
+        padding-left: 15px
+        float: left
+
+        h2
+          margin-top: 8px
+          font-size: 30px
+
+    .media
+      //outline on left
+      box-shadow: -2px 0px 0 darken(grey, 20)
+
+//Box Content Styling
+.box
+  a
+    width: 100%
+    p
+      //Content
+      color: white
+      text-align: center
+      padding-top: 50px
+      font-size: 50px
+
+      //Structure
+      margin-top: 5px
+      width: 100%
+      max-width: 580px
+      height: 120px
+
+      //Style
+      background-color: darken(grey, 20)
+      border-radius: 8px
+      box-shadow: 0px 3px 5px grey
+      &:hover
+        box-shadow: 0px 4px 10px grey
+
+//Backgrounds
+a p.hx
+  background-image: url("img/hex.gif")
+  background-position: right bottom
+
+a p.le
+  background-image: url("img/editor_anim.gif")
+  background-position: left center
+
+a p.kg
+  background-image: url("img/knight.gif")
+  background-position: center left
+
+a p.et
+  background-image: url("img/expert.gif")
+  background-position: center center
+
+a p.gl
+  color: darken(grey, 15)
+  background-image: url("img/galana.gif")
+  background-position: middle bottom
+
+a p.sh
+  background-image: url("img/shine.gif")
+  background-position: middle bottom
+
+a p.ve
+  background-image: url("img/venus.gif")
+  background-position: middle top
+
+//Media
+
+a p.ot
+  background-image: url("img/obtuse.gif")
+  background-repeat: no-repeat
+  background-position: middle center
+
+a p.td
+  background-image: url("img/tdos.gif")
+  background-repeat: no-repeat
+  background-position: middle center

@@ -1,124 +1,36 @@
-<!DOCTYPE html>
 
 <html>
-	<title>E Breakey</title>
-	<head>
-		<link rel="icon" href="icon.png">
-
-		<style>
-		 @keyframes fadeIn {
-	from {opacity: 0;}
-    to {opacity: 1.0;}
- }
-
- * {
-	animation-name: fadeIn;
-    animation-duration: 1s;
-	font-family: "Courier New", Georgia, Serif;
- }
-
- a {
-	 color: black;
-	 font-size: 30px;
-	 text-decoration: none;
- }
-
- h1 {
-	 padding-top: 20px;
-	 padding-bottom: 0px;
-	 margin-bottom: 2px;
-	 text-decoration: none;
-	 font-weight:normal;
-	 font-style: oblique;
-	 font-size: 50px;
- }
-
- h2 {
-	 margin-top: 0px;
-	 padding-top: 0px;
- }
-
- div.RightHeadContainer {
-	 float: left;
-	 display: inline;
- }
-
- tr {
-	 display: inline;
-	 float: left;
-	 border-right: 1px solid grey;
- }
-
- td {
-	 padding-right: 100px;
- }
-
- img {
-	padding-left: 15px;
-	padding-right: 15px;
-	image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges;          /* Firefox                        */
-    image-rendering: -o-crisp-edges;            /* Opera                          */
-    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-    image-rendering: pixelated; /* Chrome */
-    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
- }
-
- img.Heading {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-	margin-top: 100px;
-	margin-bottom: 60px;
- }
-
- #Content {
-	margin-left: 0%;
-	text-align: center;
- }
-
- .twitter-timeline {
-	//float: right;
-	//margin-right: 20%;
- }
-		</style>
-	</head>
-
-	<body>
-		<hr style="width: 400px;margin-top:20px;">
-		<h1 style="margin-top:0px;padding-top:0px;text-align: center;font-size:100px;">E BREAKEY</h1>
-		<hr style="width: 400px;">
-		<div id="Content">
-
-			<h1>WHERE TO?</h1>
-			<a href="http://retroverse.github.io/tdos">TDOS Site</a><br>
-			<a href="http://retroverse.github.io/Hex">Hex</a><br>
-			<a href="https://github.com/retroverse">Github</a><br>
-			<a href="http://retroverse.github.io/Obtuse-Triangle/site">Blog</a><br>
-			<a href="http://twitter.com/retr0verse">Twitter</a><br>
-			<a href="lime/index.html">Lime Engine</a><br>
-			<br>
-			<h1>Twitter Feed</h1>
-			<a class="twitter-timeline"
-			   href="https://twitter.com/retr0verse"
-			   data-widget-id="726711212818329601"
-			   data-chrome="nofooter noborders noheader noscrollbar transparent">
-			   >
-				Tweets by @retr0verse
-			</a>
-			<script>
-				!function(d,s,id){
-				var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-				if(!d.getElementById(id)){
-					js=d.createElement(s);
-					js.id=id;
-					js.src=p+"://platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js,fjs);
-					}
-				}(document,"script","twitter-wjs");
-			</script>
-		</div>
-	</body>
-
+  <head>
+    <!--font 'lato'-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"/>
+    <!--iconic font-->
+    <link rel="stylesheet" href="site/font-awesome/css/font-awesome.min.css"/>
+    <!--web styling-->
+    <link rel="stylesheet" type="text/css" href="site/style/index.min.css"/>
+    <!--helper for navigation-->
+    <script>function goto(x) {window.location.href = "http://"+x}</script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!--page heading-->
+      <h1 class="title">Ewan Breakey</h1>
+      <!--social icons-->
+      <div class="soc-icons"><a href="http://github.com/retroverse" class="fa fa-github fa-4x"></a><a href="http://twitter.com/retr0verse" class="fa fa-twitter fa-4x"></a></div>
+      <!--Projects-->
+      <div class="box projects"><a>
+          <h2>Projects</h2>
+          <p onclick="goto('tdos.itch.io/knight-game')" class="kg">Knight Game</p>
+          <p onclick="goto('retroverse.github.io/Hex')" class="hx">Hex</p>
+          <p onclick="goto('github.com/retroverse/LimeEditor')" class="le">Lime Editor</p>
+          <p onclick="goto('play.google.com/store/apps/details?id=com.tdos.telegram')" class="et">Expert Telegram</p>
+          <p onclick="" class="gl">Galana</p>
+          <p onclick="goto('github.com/retroverse/MoonShine')" class="sh">Moon Shine</p>
+          <p onclick="goto('github.com/retroverse/Venus')" class="ve">Venus</p></a></div>
+      <!--Media-->
+      <div class="box media"><a>
+          <h2>Media</h2>
+          <p onclick="goto('retroverse.github.io/Obtuse-Triangle/site')" class="ot"></p>
+          <p onclick="goto('retroverse.github.io/tdos')" class="td"></p></a></div>
+    </div>
+  </body>
 </html>
