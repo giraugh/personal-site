@@ -23,6 +23,7 @@ h1 {
 body {
 	width: 100vw;
 	height: 500vh;
+	overflow-x: hidden;
 }
 
 #root {height: 100%;}

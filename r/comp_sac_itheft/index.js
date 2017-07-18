@@ -13,11 +13,13 @@ $(() => {
   $('#load-0').css({opacity: '1'})
 
   window.keepGoing = () => {
-    $('*').animate({
-      opacity: 0
-    }, 1000, () => {
-      window.location = 'second.html'
-    })
+    if ($('#keep-going').parent().hasClass('current')) {
+      $('*').animate({
+        opacity: 0
+      }, 1000, () => {
+        window.location = 'second.html'
+      })
+    }
   }
 
   let update = () => {
@@ -53,6 +55,12 @@ $(() => {
       }
     } else {
 
+    }
+
+    if ($('#keep-going').parent().hasClass('current')) {
+      $('#keep-going').css({cursor: 'pointer'})
+    } else {
+      $('#keep-going').css({cursor: 'default'})
     }
     window.requestAnimationFrame(update)
   }
