@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 * {
   margin: 0px;
   padding: 0px;
+  font-family: 'Lato';
+  opacity: 0;
 }
 
 .seperator {
@@ -15,22 +19,29 @@
   height: 100%;
   width: 100%;
   padding: 10px;
+
+  color: #565656;
+}
+
+.content h1 {
+  font-size: 35px;
 }
 
 #left {
-  background: red;
+
 }
 
 #right {
-  background: coral;
+  color: white;
+  background: grey;
+  overflow: none;
+  border-radius: 10px;
 }
 
-@media all and (max-width: 900px) {
-  * {
-    color: pink;
-  }
+@media screen and (orientation: portrait) {
   .seperator {
     float: none;
     width: 80%;
+    margin: auto;
   }
 }
