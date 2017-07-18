@@ -1,0 +1,36 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.seperator {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 60px;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+#left {
+  background: red;
+}
+
+#right {
+  background: coral;
+}
+
+@media all and (max-width: 900px) {
+  * {
+    color: pink;
+  }
+  .seperator {
+    float: none;
+    width: 80%;
+  }
+}

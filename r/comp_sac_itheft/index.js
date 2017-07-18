@@ -12,6 +12,14 @@ $(() => {
 
   $('#load-0').css({opacity: '1'})
 
+  window.keepGoing = () => {
+    $('*').animate({
+      opacity: 0
+    }, 1000, () => {
+      window.location = 'second.html'
+    })
+  }
+
   let update = () => {
     let scrollPercent = ($(window).scrollTop() / $(document).height()) * 100 / 67.9
     scrollPercent = scrollPercent <= 1 ? scrollPercent : 1
