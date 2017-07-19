@@ -33,10 +33,11 @@
 }
 
 #right {
-  color: white;
-  background: grey;
+  background-image: url('imgs/pikto.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: none;
-  border-radius: 10px;
 }
 
 #go-back i {
@@ -51,5 +52,15 @@
     float: none;
     width: 80%;
     margin: auto;
+	font-size: 17px;
   }
-}
+  
+  #first {
+	height: 30%;
+  }
+
+  #second {
+	height: 60%;
+  }
+  
+ }
