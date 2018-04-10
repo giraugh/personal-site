@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({9:[function(require,module,exports) {
+})({10:[function(require,module,exports) {
 class Entity {
   constructor (_x, _y, _w, _h, { colour: _col = 'black', label: _lab = 'none' } = {}) {
     this.x = _x
@@ -91,7 +91,7 @@ class Entity {
 
 module.exports = Entity
 
-},{}],8:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 const rectangleObjectsOverlap = ({x: ax, y: ay, w: aw, h: ah}, {x: bx, y: by, w: bw, h: bh}) =>
   rectanglesOverlap(ax, ay, aw, ah, bx, by, bw, bh)
 
@@ -202,7 +202,7 @@ class PhysicsEntity extends Entity {
 
 module.exports = PhysicsEntity
 
-},{"./entity":9,"./util":8}],15:[function(require,module,exports) {
+},{"./entity":10,"./util":11}],12:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const force = 25
 
@@ -242,7 +242,7 @@ class ParticleEntity extends PhysicsEntity {
 
 module.exports = ParticleEntity
 
-},{"./physicsEntity":6}],18:[function(require,module,exports) {
+},{"./physicsEntity":6}],14:[function(require,module,exports) {
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -1439,7 +1439,7 @@ else {
 
 })(Math);
 
-},{}],17:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1490,7 +1490,7 @@ class CorpseEntity extends Entity {
 
 module.exports = CorpseEntity
 
-},{"./entity":9,"tinycolor2":18,"./util":8}],7:[function(require,module,exports) {
+},{"./entity":10,"tinycolor2":14,"./util":11}],7:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const ParticleEntity = require('./particleEntity')
 const CorpseEntity = require('./corpseEntity')
@@ -1614,10 +1614,10 @@ class PlayerEntity extends PhysicsEntity {
           this.jumps = 2
           this.stretch = 0.7
           this.squeeze = 1.3
+        } else {
+          // Kill Player
+          player.die(addEntity)
         }
-
-        // Kill Player
-        player.die(addEntity)
       }
     }
 
@@ -1642,7 +1642,7 @@ class PlayerEntity extends PhysicsEntity {
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":6,"./particleEntity":15,"./corpseEntity":17,"./util":8}],24:[function(require,module,exports) {
+},{"./physicsEntity":6,"./particleEntity":12,"./corpseEntity":13,"./util":11}],8:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1698,7 +1698,7 @@ class BirthEntity extends Entity {
 
 module.exports = BirthEntity
 
-},{"./entity":9,"tinycolor2":18,"./util":8}],4:[function(require,module,exports) {
+},{"./entity":10,"tinycolor2":14,"./util":11}],3:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const PlayerEntity = require('./playerEntity')
 const BirthEntity = require('./birthEntity')
@@ -1772,7 +1772,7 @@ const main = ctx => {
 
 module.exports = main
 
-},{"./physicsEntity":6,"./playerEntity":7,"./birthEntity":24}],3:[function(require,module,exports) {
+},{"./physicsEntity":6,"./playerEntity":7,"./birthEntity":8}],4:[function(require,module,exports) {
 const create = (width, height) => {
   const canvas = document.createElement('canvas')
   canvas.width = width
@@ -1823,7 +1823,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":4,"./src/canvas":3,"./src/input":5}],23:[function(require,module,exports) {
+},{"./src/main":3,"./src/canvas":4,"./src/input":5}],15:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -1843,7 +1843,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '49267' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '60348' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -1944,5 +1944,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[23,2])
+},{}]},{},[15,2])
 //# sourceMappingURL=/dist/squish.map
