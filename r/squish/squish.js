@@ -1589,6 +1589,7 @@ class PlayerEntity extends PhysicsEntity {
       slamHeight: _slmh = 3,
       verticalFriction: _vfric = 0.01,
       horizontalFriction: _hfric = 0.2,
+      gripTime: _grpt = 60,
       spawnPlayer: _spwnp,
       number: _n
     } = opts
@@ -1606,6 +1607,9 @@ class PlayerEntity extends PhysicsEntity {
     this.stretch = 1
     this.squeeze = 1
     this.depth = -1
+    this.gripTimeMax = _grpt
+    this.gripTime = this.gripTimeMax
+    this.offsetUpwards = false
   }
 
   die (addEntity) {
@@ -1631,6 +1635,7 @@ class PlayerEntity extends PhysicsEntity {
     // Get player input
     const hInp = +isDown(this.inputs, 'right') - +isDown(this.inputs, 'left')
     const jInp = isPressed(this.inputs, 'jump')
+    const gInp = isDown(this.inputs, 'jump')
     const dInp = isDown(this.inputs, 'slam')
 
     // Horizontal Movement
@@ -1661,9 +1666,24 @@ class PlayerEntity extends PhysicsEntity {
       this.vy += this.slmHght
     }
 
+    // Grip onto the top of blocks
+    this.offsetUpwards = false
+    if (this.gripTime > 0 && gInp) {
+      console.log('do the grip')
+      if (this.willIntersect(entities, 0, -1)) {
+        console.log('am gripping, have ' + this.gripTime + ' time left.')
+        this.gripTime -= 1
+        this.vy = -2 * this.gravity
+        let x = 0.6 * (this.gripTime / this.gripTimeMax)
+        this.stretch = lerp(this.stretch, 1 + x, 0.4)
+        this.squeeze = lerp(this.squeeze, 1 - x, 0.4)
+        this.jumps = this.jumpsMax + 1
+        this.offsetUpwards = true
+      }
+    }
+
     // Regain jumps & make splats
     if (this.willIntersect(entities, 0, 1)) {
-
       /*
       // Create Splats
       let x = this.x + this.w / 2
@@ -1681,8 +1701,9 @@ class PlayerEntity extends PhysicsEntity {
         this.squeeze = lerp(this.squeeze, 0.9, 0.2)
       }
 
-      // reset jumps
+      // reset jumps & gripTime
       this.jumps = this.jumpsMax
+      this.gripTime = this.gripTimeMax
     } else {
       this.stretch = lerp(this.stretch, 0.8, 0.2)
       this.squeeze = lerp(this.squeeze, 1.2, 0.2)
@@ -1731,6 +1752,9 @@ class PlayerEntity extends PhysicsEntity {
     let h = this.h * this.squeeze
     let x = this.x + ((1 - this.stretch) * this.w / 2)
     let y = this.y + ((1 - this.squeeze) * this.h)
+    if (this.offsetUpwards) {
+      y = this.y
+    }
     ctx.fillRect(x, y, w, h)
   }
 }
@@ -1972,7 +1996,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":3,"./src/canvas":4,"./src/input":5}],15:[function(require,module,exports) {
+},{"./src/main":3,"./src/canvas":4,"./src/input":5}],18:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2093,5 +2117,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[15,2])
+},{}]},{},[18,2])
 //# sourceMappingURL=/dist/squish.map
