@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({9:[function(require,module,exports) {
+})({13:[function(require,module,exports) {
 class Entity {
   constructor (_x, _y, _w, _h, { colour: _col = 'black', label: _lab = 'none' } = {}) {
     this.x = _x
@@ -92,7 +92,7 @@ class Entity {
 
 module.exports = Entity
 
-},{}],10:[function(require,module,exports) {
+},{}],12:[function(require,module,exports) {
 const rectangleObjectsOverlap = ({x: ax, y: ay, w: aw, h: ah}, {x: bx, y: by, w: bw, h: bh}) =>
   rectanglesOverlap(ax, ay, aw, ah, bx, by, bw, bh)
 
@@ -111,7 +111,7 @@ module.exports = {
   lerp
 }
 
-},{}],6:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
 const Entity = require('./entity')
 const { rectanglesOverlap } = require('./util')
 
@@ -203,7 +203,7 @@ class PhysicsEntity extends Entity {
 
 module.exports = PhysicsEntity
 
-},{"./entity":9,"./util":10}],14:[function(require,module,exports) {
+},{"./entity":13,"./util":12}],15:[function(require,module,exports) {
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -1400,7 +1400,7 @@ else {
 
 })(Math);
 
-},{}],13:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 
@@ -1453,7 +1453,7 @@ class SplatterEntity extends Entity {
 
 module.exports = SplatterEntity
 
-},{"./entity":9,"tinycolor2":14}],12:[function(require,module,exports) {
+},{"./entity":13,"tinycolor2":15}],9:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const SplatterEntity = require('./splatterEntity')
 const force = 25
@@ -1499,7 +1499,7 @@ class ParticleEntity extends PhysicsEntity {
 
 module.exports = ParticleEntity
 
-},{"./physicsEntity":6,"./splatterEntity":13}],20:[function(require,module,exports) {
+},{"./physicsEntity":7,"./splatterEntity":14}],10:[function(require,module,exports) {
 const Entity = require('./entity.js')
 const { lerp } = require('./util')
 
@@ -1518,8 +1518,8 @@ class ScoreParticleEntity extends Entity {
     this.number = _num
     this.range = _rng
     this.ethereal = true
-    this.fadeTime = 30
-    this.fade = this.fadeTime + 60
+    this.fadeTime = 15
+    this.fade = this.fadeTime + 50
     this.ease = Math.random() * 0.4 + 0.1
   }
 
@@ -1527,6 +1527,7 @@ class ScoreParticleEntity extends Entity {
     // Fade out
     this.fade--
     if (this.fade < 0) {
+      console.log('remove me')
       this.remove = true
     }
 
@@ -1562,7 +1563,7 @@ class ScoreParticleEntity extends Entity {
 
 module.exports = ScoreParticleEntity
 
-},{"./entity.js":9,"./util":10}],11:[function(require,module,exports) {
+},{"./entity.js":13,"./util":12}],11:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1617,7 +1618,7 @@ class CorpseEntity extends Entity {
 
 module.exports = CorpseEntity
 
-},{"./entity":9,"tinycolor2":14,"./util":10}],7:[function(require,module,exports) {
+},{"./entity":13,"tinycolor2":15,"./util":12}],6:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const ParticleEntity = require('./particleEntity')
 const ScoreParticleEntity = require('./scoreParticleEntity')
@@ -1625,7 +1626,7 @@ const ScoreParticleEntity = require('./scoreParticleEntity')
 const CorpseEntity = require('./corpseEntity')
 const { lerp } = require('./util')
 
-const particleNum = 40
+const particleNum = 30
 
 const isDown = (inputs, input) => {
   let i = inputs[input]
@@ -1783,7 +1784,7 @@ class PlayerEntity extends PhysicsEntity {
     }
 
     // Fall out of world
-    if (this.x + this.w < 0 || this.x - this.w > window.size[0] || this.y - this.h > window.size[1]) {
+    if (this.y - this.h > window.size[1]) {
       this.die(addEntity)
     }
 
@@ -1808,7 +1809,7 @@ class PlayerEntity extends PhysicsEntity {
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":20,"./corpseEntity":11,"./util":10}],8:[function(require,module,exports) {
+},{"./physicsEntity":7,"./particleEntity":9,"./scoreParticleEntity":10,"./corpseEntity":11,"./util":12}],8:[function(require,module,exports) {
 const Entity = require('./entity')
 const PlayerEntity = require('./playerEntity')
 const tc = require('tinycolor2')
@@ -1875,7 +1876,7 @@ class BirthEntity extends Entity {
 
 module.exports = BirthEntity
 
-},{"./entity":9,"./playerEntity":7,"tinycolor2":14,"./util":10}],3:[function(require,module,exports) {
+},{"./entity":13,"./playerEntity":6,"tinycolor2":15,"./util":12}],3:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const PlayerEntity = require('./playerEntity')
 const BirthEntity = require('./birthEntity')
@@ -1992,7 +1993,7 @@ const main = ctx => {
 
 module.exports = main
 
-},{"./physicsEntity":6,"./playerEntity":7,"./birthEntity":8}],4:[function(require,module,exports) {
+},{"./physicsEntity":7,"./playerEntity":6,"./birthEntity":8}],4:[function(require,module,exports) {
 const create = (width, height) => {
   const canvas = document.createElement('canvas')
   canvas.width = width
@@ -2043,7 +2044,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":3,"./src/canvas":4,"./src/input":5}],21:[function(require,module,exports) {
+},{"./src/main":3,"./src/canvas":4,"./src/input":5}],16:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2063,7 +2064,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '50067' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '62471' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -2164,5 +2165,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[21,2])
+},{}]},{},[16,2])
 //# sourceMappingURL=/dist/squish.map
