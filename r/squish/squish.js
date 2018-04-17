@@ -1499,7 +1499,70 @@ class ParticleEntity extends PhysicsEntity {
 
 module.exports = ParticleEntity
 
-},{"./physicsEntity":6,"./splatterEntity":13}],11:[function(require,module,exports) {
+},{"./physicsEntity":6,"./splatterEntity":13}],20:[function(require,module,exports) {
+const Entity = require('./entity.js')
+const { lerp } = require('./util')
+
+class ScoreParticleEntity extends Entity {
+  constructor (...args) {
+    // Call Super and get opts
+    super(...args)
+    let opts = args[4]
+
+    // Get options
+    let {
+      number: _num = 1,
+      range: _rng = 50
+    } = opts
+
+    this.number = _num
+    this.range = _rng
+    this.ethereal = true
+    this.fadeTime = 30
+    this.fade = this.fadeTime + 60
+    this.ease = Math.random() * 0.4 + 0.1
+  }
+
+  update (entities) {
+    // Fade out
+    this.fade--
+    if (this.fade < 0) {
+      this.remove = true
+    }
+
+    // Find Player
+    const player = entities.find(e => e.isPlayer && e.colour === this.colour)
+    if (player) {
+      // Find Distance to player from us
+      const dist = Math.sqrt((player.x - this.x) ** 2 + (player.y - this.y) ** 2)
+
+      // If outside of range, snap to edge of range
+      if (dist > this.range) {
+        const dir = Math.atan2(this.y - player.y, this.x - player.x)
+        const x = player.x + Math.cos(dir) * this.range
+        const y = player.y + Math.sin(dir) * this.range
+        this.x = lerp(this.x, x, this.ease)
+        this.y = lerp(this.y, y, this.ease)
+      }
+    }
+  }
+
+  draw (ctx) {
+    // Draw circle for now
+    ctx.fillStyle = this.colour
+    ctx.globalAlpha = Math.max(0, this.fade / this.fadeTime)
+    // ctx.beginPath()
+    // ctx.arc(this.x, this.y, 15, 0, Math.PI * 2)
+    // ctx.fill()
+    ctx.font = '40px "Lato"'
+    ctx.fillText(this.number, this.x, this.y)
+    ctx.globalAlpha = 1
+  }
+}
+
+module.exports = ScoreParticleEntity
+
+},{"./entity.js":9,"./util":10}],11:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1557,6 +1620,7 @@ module.exports = CorpseEntity
 },{"./entity":9,"tinycolor2":14,"./util":10}],7:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const ParticleEntity = require('./particleEntity')
+const ScoreParticleEntity = require('./scoreParticleEntity')
 // const SplatterEntity = require('./splatterEntity')
 const CorpseEntity = require('./corpseEntity')
 const { lerp } = require('./util')
@@ -1589,7 +1653,6 @@ class PlayerEntity extends PhysicsEntity {
       slamHeight: _slmh = 3,
       verticalFriction: _vfric = 0.01,
       horizontalFriction: _hfric = 0.2,
-      gripTime: _grpt = 60,
       spawnPlayer: _spwnp,
       number: _n
     } = opts
@@ -1607,9 +1670,7 @@ class PlayerEntity extends PhysicsEntity {
     this.stretch = 1
     this.squeeze = 1
     this.depth = -1
-    this.gripTimeMax = _grpt
-    this.gripTime = this.gripTimeMax
-    this.offsetUpwards = false
+    this.kills = 0
   }
 
   die (addEntity) {
@@ -1635,7 +1696,6 @@ class PlayerEntity extends PhysicsEntity {
     // Get player input
     const hInp = +isDown(this.inputs, 'right') - +isDown(this.inputs, 'left')
     const jInp = isPressed(this.inputs, 'jump')
-    const gInp = isDown(this.inputs, 'jump')
     const dInp = isDown(this.inputs, 'slam')
 
     // Horizontal Movement
@@ -1664,22 +1724,6 @@ class PlayerEntity extends PhysicsEntity {
     // Slamming
     if (dInp) {
       this.vy += this.slmHght
-    }
-
-    // Grip onto the top of blocks
-    this.offsetUpwards = false
-    if (this.gripTime > 0 && gInp) {
-      console.log('do the grip')
-      if (this.willIntersect(entities, 0, -1)) {
-        console.log('am gripping, have ' + this.gripTime + ' time left.')
-        this.gripTime -= 1
-        this.vy = -2 * this.gravity
-        let x = 0.6 * (this.gripTime / this.gripTimeMax)
-        this.stretch = lerp(this.stretch, 1 + x, 0.4)
-        this.squeeze = lerp(this.squeeze, 1 - x, 0.4)
-        this.jumps = this.jumpsMax + 1
-        this.offsetUpwards = true
-      }
     }
 
     // Regain jumps & make splats
@@ -1714,7 +1758,7 @@ class PlayerEntity extends PhysicsEntity {
     this.vy = lerp(this.vy, 0, this.vFric)
 
     // Kill other players
-    const players = entities.filter(e => e.isPlayer && e !== this)
+    const players = entities.filter(e => e.isPlayer && e !== this && !e.remove)
     for (let player of players) {
       if (this.willIntersectWith(player, 0, 1)) {
         // Jump Effect
@@ -1726,8 +1770,14 @@ class PlayerEntity extends PhysicsEntity {
           player.squeeze = 0.7
           player.stretch = 1.3
         } else {
+          // Increment kills
+          this.kills++
+
           // Kill Player
           player.die(addEntity)
+
+          // Spawn score particle
+          addEntity(new ScoreParticleEntity(this.x, this.y - 10, 0, 0, {colour: this.colour, number: this.kills}))
         }
       }
     }
@@ -1752,16 +1802,13 @@ class PlayerEntity extends PhysicsEntity {
     let h = this.h * this.squeeze
     let x = this.x + ((1 - this.stretch) * this.w / 2)
     let y = this.y + ((1 - this.squeeze) * this.h)
-    if (this.offsetUpwards) {
-      y = this.y
-    }
     ctx.fillRect(x, y, w, h)
   }
 }
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":6,"./particleEntity":12,"./corpseEntity":11,"./util":10}],8:[function(require,module,exports) {
+},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":20,"./corpseEntity":11,"./util":10}],8:[function(require,module,exports) {
 const Entity = require('./entity')
 const PlayerEntity = require('./playerEntity')
 const tc = require('tinycolor2')
@@ -1996,7 +2043,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":3,"./src/canvas":4,"./src/input":5}],18:[function(require,module,exports) {
+},{"./src/main":3,"./src/canvas":4,"./src/input":5}],21:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2117,5 +2164,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[18,2])
+},{}]},{},[21,2])
 //# sourceMappingURL=/dist/squish.map
