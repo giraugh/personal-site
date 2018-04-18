@@ -1810,21 +1810,17 @@ class PlayerEntity extends PhysicsEntity {
       dInp
     } = this.getInput(entities)
 
-    // Horizontal Movement
-    if (dInp) {
-      this.vx += hInp * this.hSpd * 1.7
-    } else {
-      this.vx += hInp * this.hSpd
+    // Dash
+    if (Math.sign(this.vx) !== hInp && hInp === 0) {
+      this.vx += hInp * this.hSpd * 2
     }
 
+    // Horizontal Movement
+    this.vx += hInp * this.hSpd
+
     // Apply friction (damping)
-    if (dInp && hInp === 0) {
-      this.vx = lerp(this.vx, 0, this.hFric * 1.4)
-      this.vy = lerp(this.vy, 0, this.vFric)
-    } else {
-      this.vx = lerp(this.vx, 0, this.hFric)
-      this.vy = lerp(this.vy, 0, this.vFric)
-    }
+    this.vx = lerp(this.vx, 0, this.hFric)
+    this.vy = lerp(this.vy, 0, this.vFric)
 
     // Jumping
     if (this.jumps > 1 && jInp) {
@@ -2193,7 +2189,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":5,"./src/canvas":4,"./src/input":3}],23:[function(require,module,exports) {
+},{"./src/main":5,"./src/canvas":4,"./src/input":3}],24:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2314,5 +2310,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[23,2])
+},{}]},{},[24,2])
 //# sourceMappingURL=/dist/squish.map
