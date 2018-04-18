@@ -1812,19 +1812,14 @@ class PlayerEntity extends PhysicsEntity {
 
     // Horizontal Movement
     if (dInp) {
-      if (!this.isBot) {
-        const hInpP = +isPressed(this.inputs, 'right') - +isPressed(this.inputs, 'left')
-        this.vx += hInpP * this.hSpd * 10
-      } else {
-        this.vx += hInp * this.hSpd * 2
-      }
+      this.vx += hInp * this.hSpd * 1.7
     } else {
       this.vx += hInp * this.hSpd
     }
 
     // Apply friction (damping)
     if (dInp && hInp === 0) {
-      this.vx = lerp(this.vx, 0, this.hFric * 1.3)
+      this.vx = lerp(this.vx, 0, this.hFric * 1.4)
       this.vy = lerp(this.vy, 0, this.vFric)
     } else {
       this.vx = lerp(this.vx, 0, this.hFric)
