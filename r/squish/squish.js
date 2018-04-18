@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({10:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 class Entity {
   constructor (_x, _y, _w, _h, { colour: _col = 'black', label: _lab = 'none' } = {}) {
     this.x = _x
@@ -92,7 +92,7 @@ class Entity {
 
 module.exports = Entity
 
-},{}],9:[function(require,module,exports) {
+},{}],10:[function(require,module,exports) {
 const rectangleObjectsOverlap = ({x: ax, y: ay, w: aw, h: ah}, {x: bx, y: by, w: bw, h: bh}) =>
   rectanglesOverlap(ax, ay, aw, ah, bx, by, bw, bh)
 
@@ -116,7 +116,7 @@ module.exports = {
   most
 }
 
-},{}],6:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
 const Entity = require('./entity')
 const { rectanglesOverlap } = require('./util')
 
@@ -208,7 +208,7 @@ class PhysicsEntity extends Entity {
 
 module.exports = PhysicsEntity
 
-},{"./entity":10,"./util":9}],11:[function(require,module,exports) {
+},{"./entity":11,"./util":10}],18:[function(require,module,exports) {
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -1405,7 +1405,7 @@ else {
 
 })(Math);
 
-},{}],16:[function(require,module,exports) {
+},{}],17:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 
@@ -1458,7 +1458,7 @@ class SplatterEntity extends Entity {
 
 module.exports = SplatterEntity
 
-},{"./entity":10,"tinycolor2":11}],12:[function(require,module,exports) {
+},{"./entity":11,"tinycolor2":18}],12:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const SplatterEntity = require('./splatterEntity')
 const force = 25
@@ -1504,9 +1504,8 @@ class ParticleEntity extends PhysicsEntity {
 
 module.exports = ParticleEntity
 
-},{"./physicsEntity":6,"./splatterEntity":16}],13:[function(require,module,exports) {
+},{"./physicsEntity":7,"./splatterEntity":17}],13:[function(require,module,exports) {
 const Entity = require('./entity.js')
-const { lerp } = require('./util')
 
 class ScoreParticleEntity extends Entity {
   constructor (...args) {
@@ -1526,6 +1525,7 @@ class ScoreParticleEntity extends Entity {
     this.fadeTime = 15
     this.fade = this.fadeTime + 50
     this.ease = Math.random() * 0.4 + 0.1
+    this.depth = -4
   }
 
   update (entities) {
@@ -1535,16 +1535,11 @@ class ScoreParticleEntity extends Entity {
       this.remove = true
     }
 
-    // Find Player
+    /* // Find Player
     const player = entities.find(e => e.isPlayer && e.colour === this.colour)
     if (player) {
       // Find Distance to player from us
       const dist = Math.sqrt((player.x - this.x) ** 2 + (player.y - this.y) ** 2)
-
-      if (dist > this.range * 4) {
-        this.x = player.x
-        this.y = player.y
-      }
 
       // If outside of range, snap to edge of range
       if (dist > this.range) {
@@ -1554,7 +1549,7 @@ class ScoreParticleEntity extends Entity {
         this.x = lerp(this.x, x, this.ease)
         this.y = lerp(this.y, y, this.ease)
       }
-    }
+    } */
   }
 
   draw (ctx) {
@@ -1572,7 +1567,7 @@ class ScoreParticleEntity extends Entity {
 
 module.exports = ScoreParticleEntity
 
-},{"./entity.js":10,"./util":9}],14:[function(require,module,exports) {
+},{"./entity.js":11}],14:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1627,7 +1622,7 @@ class CorpseEntity extends Entity {
 
 module.exports = CorpseEntity
 
-},{"./entity":10,"tinycolor2":11,"./util":9}],15:[function(require,module,exports) {
+},{"./entity":11,"tinycolor2":18,"./util":10}],15:[function(require,module,exports) {
 const { least } = require('./util')
 
 function botBrain (players) {
@@ -1686,7 +1681,7 @@ function botBrain (players) {
 
 module.exports = botBrain
 
-},{"./util":9}],7:[function(require,module,exports) {
+},{"./util":10}],8:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const ParticleEntity = require('./particleEntity')
 const ScoreParticleEntity = require('./scoreParticleEntity')
@@ -1943,7 +1938,7 @@ class PlayerEntity extends PhysicsEntity {
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":13,"./corpseEntity":14,"./botBrain":15,"tinycolor2":11,"./util":9}],8:[function(require,module,exports) {
+},{"./physicsEntity":7,"./particleEntity":12,"./scoreParticleEntity":13,"./corpseEntity":14,"./botBrain":15,"tinycolor2":18,"./util":10}],9:[function(require,module,exports) {
 const Entity = require('./entity')
 const PlayerEntity = require('./playerEntity')
 const tc = require('tinycolor2')
@@ -2010,7 +2005,7 @@ class BirthEntity extends Entity {
 
 module.exports = BirthEntity
 
-},{"./entity":10,"./playerEntity":7,"tinycolor2":11,"./util":9}],3:[function(require,module,exports) {
+},{"./entity":11,"./playerEntity":8,"tinycolor2":18,"./util":10}],5:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const PlayerEntity = require('./playerEntity')
 const BirthEntity = require('./birthEntity')
@@ -2097,12 +2092,14 @@ const playerSpawns = [
   [275, 290],
   [675, 290],
   [300, 490],
-  [650, 490]
+  [650, 490],
+  [300, 60],
+  [650, 60]
 ]
 
 const spawnPlayer = (n, opts) => {
   const players = entities.filter(e => e.isPlayer || e.label === 'birth')
-  let spawn = playerSpawns[n]
+  let spawn = playerSpawns[Math.round(Math.random() * (playerSpawns.length - 1))]
   if (players.length) {
     const dist = ([ax, ay]) => ({x: bx, y: by}) => Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2)
     const distToNearestPlayer = (spawn) => dist(spawn)(players.reduce(least(dist(spawn))))
@@ -2136,7 +2133,7 @@ const main = ctx => {
 
 module.exports = main
 
-},{"./physicsEntity":6,"./playerEntity":7,"./birthEntity":8,"./util":9}],4:[function(require,module,exports) {
+},{"./physicsEntity":7,"./playerEntity":8,"./birthEntity":9,"./util":10}],4:[function(require,module,exports) {
 const create = (width, height) => {
   const canvas = document.createElement('canvas')
   canvas.width = width
@@ -2148,7 +2145,7 @@ const create = (width, height) => {
 
 module.exports = create
 
-},{}],5:[function(require,module,exports) {
+},{}],3:[function(require,module,exports) {
 const setup = _ => {
   // Keyboard
   window.keys = {}
@@ -2187,7 +2184,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":3,"./src/canvas":4,"./src/input":5}],17:[function(require,module,exports) {
+},{"./src/main":5,"./src/canvas":4,"./src/input":3}],21:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2207,7 +2204,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '50278' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '49339' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -2308,5 +2305,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[17,2])
+},{}]},{},[21,2])
 //# sourceMappingURL=/dist/squish.map
