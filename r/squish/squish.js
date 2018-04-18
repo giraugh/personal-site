@@ -1664,16 +1664,16 @@ function botBrain (players) {
   }
 
   // Crap!
-  if (!this.isStupid) {
-    if (this.x < 170 || this.x > 730) {
-      if (this.y < 600) {
+  if (this.x < 170 || this.x > 730) {
+    if (this.y < 600) {
+      if (!this.isStupid) {
         // Above lowest platform
         let dirToCenter = Math.sign(450 - this.x)
         hInp = dirToCenter
-      } else {
-        hInp = 0
-        jInp = 1
       }
+    } else {
+      hInp = 0
+      jInp = 1
     }
   }
 
@@ -1692,6 +1692,7 @@ const ParticleEntity = require('./particleEntity')
 const ScoreParticleEntity = require('./scoreParticleEntity')
 const CorpseEntity = require('./corpseEntity')
 const botBrain = require('./botBrain')
+const tc = require('tinycolor2')
 const { lerp } = require('./util')
 
 const particleNum = 30
@@ -1748,7 +1749,7 @@ class PlayerEntity extends PhysicsEntity {
     this.becomeBotTimeout = 450
     this.isBot = _isbt
     this.onGround = false
-    this.isStupid = Math.random() < 0.5
+    this.isStupid = Math.random() < 0.3
   }
 
   die (addEntity) {
@@ -1756,13 +1757,13 @@ class PlayerEntity extends PhysicsEntity {
     this.remove = true
 
     // Spawn Corpse
-    addEntity(new CorpseEntity(this.x, this.y, this.w, this.h, { colour: this.colour }))
+    addEntity(new CorpseEntity(this.x, this.y, this.w, this.h, { colour: this.getColour() }))
 
     // Spawn particles
     for (let i = 0; i < particleNum; i++) {
       let x = this.x + this.w / 2
       let y = this.y + this.h / 2
-      let particle = new ParticleEntity(x, y, 7, { colour: this.colour })
+      let particle = new ParticleEntity(x, y, 7, { colour: this.getColour() })
       addEntity(particle)
     }
 
@@ -1899,7 +1900,7 @@ class PlayerEntity extends PhysicsEntity {
           player.die(addEntity)
 
           // Spawn score particle
-          addEntity(new ScoreParticleEntity(this.x, this.y - 10, 0, 0, {colour: this.colour, number: this.kills}))
+          addEntity(new ScoreParticleEntity(this.x, this.y - 10, 0, 0, {colour: this.getColour(), number: this.kills}))
         }
       }
     }
@@ -1910,8 +1911,10 @@ class PlayerEntity extends PhysicsEntity {
     }
 
     // Loop round world
-    if (this.x > window.size[0]) { this.x = -this.w }
-    if (this.x + this.w < 0) { this.x = window.size[0] }
+    if ((!this.isBot && this.y < 650) || (this.isBot && this.y < 550)) {
+      if (this.x > window.size[0]) { this.x = -this.w }
+      if (this.x + this.w < 0) { this.x = window.size[0] }
+    }
 
     // Push down
     if (this.y < 0) {
@@ -1922,8 +1925,14 @@ class PlayerEntity extends PhysicsEntity {
     super.update(entities)
   }
 
+  getColour () {
+    let c = tc(this.colour)
+    if (this.isBot) { c.lighten(20) }
+    return c.toRgbString()
+  }
+
   draw (ctx) {
-    ctx.fillStyle = this.colour
+    ctx.fillStyle = this.getColour()
     let w = this.w * this.stretch
     let h = this.h * this.squeeze
     let x = this.x + ((1 - this.stretch) * this.w / 2)
@@ -1934,7 +1943,7 @@ class PlayerEntity extends PhysicsEntity {
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":13,"./corpseEntity":14,"./botBrain":15,"./util":9}],8:[function(require,module,exports) {
+},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":13,"./corpseEntity":14,"./botBrain":15,"tinycolor2":11,"./util":9}],8:[function(require,module,exports) {
 const Entity = require('./entity')
 const PlayerEntity = require('./playerEntity')
 const tc = require('tinycolor2')
@@ -2101,7 +2110,7 @@ const spawnPlayer = (n, opts) => {
   }
   const playerOpts = { number: n, colour: playerColours[n], inputs: inputs[n], spawnPlayer }
   const player = new PlayerEntity(...spawn, 50, 50, Object.assign(Object.assign({}, playerOpts), opts))
-  entities.push(new BirthEntity(...spawn, 50, 50, { number: n, colour: playerColours[n], spawn: player, label: 'birth' }))
+  entities.push(new BirthEntity(...spawn, 50, 50, { number: n, colour: player.getColour(), spawn: player, label: 'birth' }))
 }
 
 spawnPlayer(0)
