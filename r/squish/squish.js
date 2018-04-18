@@ -1811,7 +1811,25 @@ class PlayerEntity extends PhysicsEntity {
     } = this.getInput(entities)
 
     // Horizontal Movement
-    this.vx += hInp * this.hSpd
+    if (dInp) {
+      if (!this.isBot) {
+        const hInpP = +isPressed(this.inputs, 'right') - +isPressed(this.inputs, 'left')
+        this.vx += hInpP * this.hSpd * 10
+      } else {
+        this.vx += hInp * this.hSpd * 2
+      }
+    } else {
+      this.vx += hInp * this.hSpd
+    }
+
+    // Apply friction (damping)
+    if (dInp && hInp === 0) {
+      this.vx = lerp(this.vx, 0, this.hFric * 1.3)
+      this.vy = lerp(this.vy, 0, this.vFric)
+    } else {
+      this.vx = lerp(this.vx, 0, this.hFric)
+      this.vy = lerp(this.vy, 0, this.vFric)
+    }
 
     // Jumping
     if (this.jumps > 1 && jInp) {
@@ -1870,10 +1888,6 @@ class PlayerEntity extends PhysicsEntity {
       // For bot
       this.onGround = false
     }
-
-    // Apply friction (damping)
-    this.vx = lerp(this.vx, 0, this.hFric)
-    this.vy = lerp(this.vy, 0, this.vFric)
 
     // Kill other players
     const players = entities.filter(e => e.isPlayer && e !== this && !e.remove)
@@ -1958,7 +1972,7 @@ class BirthEntity extends Entity {
     // fade out
     this.alpha = 0
     this.time = 0
-    this.fadeTime = 60
+    this.fadeTime = 80
 
     // no physics
     this.ethereal = true
@@ -2093,8 +2107,8 @@ const playerSpawns = [
   [675, 290],
   [300, 490],
   [650, 490],
-  [300, 60],
-  [650, 60]
+  [200, 60],
+  [700, 60]
 ]
 
 const spawnPlayer = (n, opts) => {
@@ -2112,8 +2126,8 @@ const spawnPlayer = (n, opts) => {
 
 spawnPlayer(0)
 spawnPlayer(1)
-spawnPlayer(2)
-spawnPlayer(3)
+// spawnPlayer(2)
+// spawnPlayer(3)
 
 entities.push(new PhysicsEntity(150, 600, 700, 60, { colour: '#313131', kinematic: true, label: 'obstacle' }))
 entities.push(new PhysicsEntity(200, 400, 200, 20, { colour: '#313131', kinematic: true, label: 'obstacle' }))
@@ -2184,7 +2198,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":5,"./src/canvas":4,"./src/input":3}],21:[function(require,module,exports) {
+},{"./src/main":5,"./src/canvas":4,"./src/input":3}],23:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2305,5 +2319,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[21,2])
+},{}]},{},[23,2])
 //# sourceMappingURL=/dist/squish.map
