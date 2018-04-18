@@ -1633,7 +1633,7 @@ function botBrain (players) {
   let dInp = 0
 
   // Semirandom jumping
-  if (Math.random() < 0.05 && (this.onGround || this.vy > 1)) {
+  if ((Math.random() < 0.05 || (this.bouncy && Math.random() < 0.3)) && (this.onGround || this.vy > 2)) {
     jInp = 1
   }
 
@@ -1659,7 +1659,7 @@ function botBrain (players) {
   }
 
   // Crap!
-  if (this.x < 170 || this.x > 730) {
+  if (this.x < 130 || this.x > 810) {
     if (this.y < 600) {
       if (!this.isStupid) {
         // Above lowest platform
@@ -1745,6 +1745,7 @@ class PlayerEntity extends PhysicsEntity {
     this.isBot = _isbt
     this.onGround = false
     this.isStupid = Math.random() < 0.3
+    this.bouncy = Math.random() < 0.3
   }
 
   die (addEntity) {
@@ -1810,9 +1811,9 @@ class PlayerEntity extends PhysicsEntity {
       dInp
     } = this.getInput(entities)
 
-    // Dash
+    // Slight Dash
     if (Math.sign(this.vx) !== hInp && hInp === 0) {
-      this.vx += hInp * this.hSpd * 2
+      this.vx += hInp * this.hSpd * 2.4
     }
 
     // Horizontal Movement
@@ -2117,8 +2118,8 @@ const spawnPlayer = (n, opts) => {
 
 spawnPlayer(0)
 spawnPlayer(1)
-// spawnPlayer(2)
-// spawnPlayer(3)
+spawnPlayer(2)
+spawnPlayer(3)
 
 entities.push(new PhysicsEntity(150, 600, 700, 60, { colour: '#313131', kinematic: true, label: 'obstacle' }))
 entities.push(new PhysicsEntity(200, 400, 200, 20, { colour: '#313131', kinematic: true, label: 'obstacle' }))
