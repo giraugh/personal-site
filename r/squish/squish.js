@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({13:[function(require,module,exports) {
+})({10:[function(require,module,exports) {
 class Entity {
   constructor (_x, _y, _w, _h, { colour: _col = 'black', label: _lab = 'none' } = {}) {
     this.x = _x
@@ -92,7 +92,7 @@ class Entity {
 
 module.exports = Entity
 
-},{}],12:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 const rectangleObjectsOverlap = ({x: ax, y: ay, w: aw, h: ah}, {x: bx, y: by, w: bw, h: bh}) =>
   rectanglesOverlap(ax, ay, aw, ah, bx, by, bw, bh)
 
@@ -105,13 +105,18 @@ const rectanglesOverlap = (ax, ay, aw, ah, bx, by, bw, bh) =>
 const lerp = (a, b, t) =>
   a + ((b - a) * t)
 
+const least = f => (acc, val) => f(val) < f(acc) ? val : acc
+const most = f => (acc, val) => f(val) > f(acc) ? val : acc
+
 module.exports = {
   rectanglesOverlap,
   rectangleObjectsOverlap,
-  lerp
+  lerp,
+  least,
+  most
 }
 
-},{}],7:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 const Entity = require('./entity')
 const { rectanglesOverlap } = require('./util')
 
@@ -203,7 +208,7 @@ class PhysicsEntity extends Entity {
 
 module.exports = PhysicsEntity
 
-},{"./entity":13,"./util":12}],15:[function(require,module,exports) {
+},{"./entity":10,"./util":9}],11:[function(require,module,exports) {
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -1400,7 +1405,7 @@ else {
 
 })(Math);
 
-},{}],14:[function(require,module,exports) {
+},{}],16:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 
@@ -1410,8 +1415,8 @@ class SplatterEntity extends Entity {
 
     // fade out
     this.alpha = 1
-    this.time = 0
-    this.fadeTime = 100
+    this.time = -30
+    this.fadeTime = 30
     this.depth = -0.5
 
     this.ethereal = true
@@ -1453,7 +1458,7 @@ class SplatterEntity extends Entity {
 
 module.exports = SplatterEntity
 
-},{"./entity":13,"tinycolor2":15}],9:[function(require,module,exports) {
+},{"./entity":10,"tinycolor2":11}],12:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const SplatterEntity = require('./splatterEntity')
 const force = 25
@@ -1499,7 +1504,7 @@ class ParticleEntity extends PhysicsEntity {
 
 module.exports = ParticleEntity
 
-},{"./physicsEntity":7,"./splatterEntity":14}],10:[function(require,module,exports) {
+},{"./physicsEntity":6,"./splatterEntity":16}],13:[function(require,module,exports) {
 const Entity = require('./entity.js')
 const { lerp } = require('./util')
 
@@ -1527,7 +1532,6 @@ class ScoreParticleEntity extends Entity {
     // Fade out
     this.fade--
     if (this.fade < 0) {
-      console.log('remove me')
       this.remove = true
     }
 
@@ -1536,6 +1540,11 @@ class ScoreParticleEntity extends Entity {
     if (player) {
       // Find Distance to player from us
       const dist = Math.sqrt((player.x - this.x) ** 2 + (player.y - this.y) ** 2)
+
+      if (dist > this.range * 4) {
+        this.x = player.x
+        this.y = player.y
+      }
 
       // If outside of range, snap to edge of range
       if (dist > this.range) {
@@ -1563,7 +1572,7 @@ class ScoreParticleEntity extends Entity {
 
 module.exports = ScoreParticleEntity
 
-},{"./entity.js":13,"./util":12}],11:[function(require,module,exports) {
+},{"./entity.js":10,"./util":9}],14:[function(require,module,exports) {
 const Entity = require('./entity')
 const tc = require('tinycolor2')
 const { lerp } = require('./util')
@@ -1618,12 +1627,71 @@ class CorpseEntity extends Entity {
 
 module.exports = CorpseEntity
 
-},{"./entity":13,"tinycolor2":15,"./util":12}],6:[function(require,module,exports) {
+},{"./entity":10,"tinycolor2":11,"./util":9}],15:[function(require,module,exports) {
+const { least } = require('./util')
+
+function botBrain (players) {
+  const closestPlayer = players.reduce(least(p => Math.sqrt((p.x - this.x) ** 2 + (p.y - this.y) ** 2)))
+
+  let hInp = 0
+  let jInp = 0
+  let dInp = 0
+
+  // Semirandom jumping
+  if (Math.random() < 0.05 && (this.onGround || this.vy > 1)) {
+    jInp = 1
+  }
+
+  // Moving
+  if (Math.random() < 0.8) {
+    if (closestPlayer.y < this.y) {
+      // Above me, watch out the way
+      let dirToClosest = Math.sign(closestPlayer.x - this.x)
+      hInp = -dirToClosest
+    } else {
+      // Im above them, get them!
+      let dirToClosest = Math.sign(closestPlayer.x - this.x)
+      hInp = dirToClosest
+    }
+  }
+
+  // Ground Pound
+  if (!this.onGround) {
+    if (players.find(p => Math.abs(p.x - this.x) < 40 && p.y > this.y)) {
+      dInp = 1
+      jInp = 0
+    }
+  }
+
+  // Crap!
+  if (!this.isStupid) {
+    if (this.x < 170 || this.x > 730) {
+      if (this.y < 600) {
+        // Above lowest platform
+        let dirToCenter = Math.sign(450 - this.x)
+        hInp = dirToCenter
+      } else {
+        hInp = 0
+        jInp = 1
+      }
+    }
+  }
+
+  return {
+    hInp: hInp * 0.75,
+    jInp,
+    dInp
+  }
+}
+
+module.exports = botBrain
+
+},{"./util":9}],7:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const ParticleEntity = require('./particleEntity')
 const ScoreParticleEntity = require('./scoreParticleEntity')
-// const SplatterEntity = require('./splatterEntity')
 const CorpseEntity = require('./corpseEntity')
+const botBrain = require('./botBrain')
 const { lerp } = require('./util')
 
 const particleNum = 30
@@ -1655,7 +1723,9 @@ class PlayerEntity extends PhysicsEntity {
       verticalFriction: _vfric = 0.01,
       horizontalFriction: _hfric = 0.2,
       spawnPlayer: _spwnp,
-      number: _n
+      number: _n,
+      kills: _klls = 0,
+      isBot: _isbt = true
     } = opts
     this.inputs = _inps
     this.hSpd = _hspd
@@ -1671,7 +1741,14 @@ class PlayerEntity extends PhysicsEntity {
     this.stretch = 1
     this.squeeze = 1
     this.depth = -1
-    this.kills = 0
+    this.kills = _klls
+
+    // Bot Stuff
+    this.timeSinceLastInput = 0
+    this.becomeBotTimeout = 450
+    this.isBot = _isbt
+    this.onGround = false
+    this.isStupid = Math.random() < 0.5
   }
 
   die (addEntity) {
@@ -1690,14 +1767,52 @@ class PlayerEntity extends PhysicsEntity {
     }
 
     // Spawn new player
-    this.spawnPlayer(this.number)
+    this.spawnPlayer(this.number, { isBot: this.isBot, kills: this.kills })
+  }
+
+  getInput (entities) {
+    const hInp = +isDown(this.inputs, 'right') - +isDown(this.inputs, 'left')
+    const jInp = isPressed(this.inputs, 'jump')
+    const dInp = isDown(this.inputs, 'slam')
+
+    if (hInp === 0 && !jInp && !dInp) {
+      this.timeSinceLastInput += 1
+      if (this.timeSinceLastInput > this.becomeBotTimeout) {
+        this.isBot = true
+        this.timeSinceLastInput = 0
+      }
+    } else {
+      this.timeSinceLastInput = 0
+      this.isBot = false
+    }
+
+    if (!this.isBot) {
+      return {
+        hInp,
+        jInp,
+        dInp
+      }
+    } else {
+      // Get players
+      const players = entities.filter(e => e.isPlayer && e !== this && !e.remove)
+
+      // Are there any?
+      if (players.length === 0) {
+        return { hInp: 0, jInp: 0, dInp: 0 }
+      }
+
+      // Use botbrain
+      return botBrain.bind(this)(players)
+    }
   }
 
   update (entities, { addEntity }) {
     // Get player input
-    const hInp = +isDown(this.inputs, 'right') - +isDown(this.inputs, 'left')
-    const jInp = isPressed(this.inputs, 'jump')
-    const dInp = isDown(this.inputs, 'slam')
+    const {
+      hInp,
+      jInp,
+      dInp
+    } = this.getInput(entities)
 
     // Horizontal Movement
     this.vx += hInp * this.hSpd
@@ -1749,9 +1864,15 @@ class PlayerEntity extends PhysicsEntity {
       // reset jumps & gripTime
       this.jumps = this.jumpsMax
       this.gripTime = this.gripTimeMax
+
+      // For bot
+      this.onGround = true
     } else {
       this.stretch = lerp(this.stretch, 0.8, 0.2)
       this.squeeze = lerp(this.squeeze, 1.2, 0.2)
+
+      // For bot
+      this.onGround = false
     }
 
     // Apply friction (damping)
@@ -1788,6 +1909,10 @@ class PlayerEntity extends PhysicsEntity {
       this.die(addEntity)
     }
 
+    // Loop round world
+    if (this.x > window.size[0]) { this.x = -this.w }
+    if (this.x + this.w < 0) { this.x = window.size[0] }
+
     // Push down
     if (this.y < 0) {
       this.vy += 1
@@ -1809,7 +1934,7 @@ class PlayerEntity extends PhysicsEntity {
 
 module.exports = PlayerEntity
 
-},{"./physicsEntity":7,"./particleEntity":9,"./scoreParticleEntity":10,"./corpseEntity":11,"./util":12}],8:[function(require,module,exports) {
+},{"./physicsEntity":6,"./particleEntity":12,"./scoreParticleEntity":13,"./corpseEntity":14,"./botBrain":15,"./util":9}],8:[function(require,module,exports) {
 const Entity = require('./entity')
 const PlayerEntity = require('./playerEntity')
 const tc = require('tinycolor2')
@@ -1876,10 +2001,11 @@ class BirthEntity extends Entity {
 
 module.exports = BirthEntity
 
-},{"./entity":13,"./playerEntity":6,"tinycolor2":15,"./util":12}],3:[function(require,module,exports) {
+},{"./entity":10,"./playerEntity":7,"tinycolor2":11,"./util":9}],3:[function(require,module,exports) {
 const PhysicsEntity = require('./physicsEntity')
 const PlayerEntity = require('./playerEntity')
 const BirthEntity = require('./birthEntity')
+const { least, most } = require('./util')
 let entities = []
 
 const inputs = [
@@ -1965,9 +2091,17 @@ const playerSpawns = [
   [650, 490]
 ]
 
-let spawnPlayer = (n) => {
-  let player = new PlayerEntity(...playerSpawns[n], 50, 50, { number: n, colour: playerColours[n], inputs: inputs[n], spawnPlayer })
-  entities.push(new BirthEntity(...playerSpawns[n], 50, 50, { number: n, colour: playerColours[n], spawn: player }))
+const spawnPlayer = (n, opts) => {
+  const players = entities.filter(e => e.isPlayer || e.label === 'birth')
+  let spawn = playerSpawns[n]
+  if (players.length) {
+    const dist = ([ax, ay]) => ({x: bx, y: by}) => Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2)
+    const distToNearestPlayer = (spawn) => dist(spawn)(players.reduce(least(dist(spawn))))
+    spawn = playerSpawns.reduce(most(distToNearestPlayer))
+  }
+  const playerOpts = { number: n, colour: playerColours[n], inputs: inputs[n], spawnPlayer }
+  const player = new PlayerEntity(...spawn, 50, 50, Object.assign(Object.assign({}, playerOpts), opts))
+  entities.push(new BirthEntity(...spawn, 50, 50, { number: n, colour: playerColours[n], spawn: player, label: 'birth' }))
 }
 
 spawnPlayer(0)
@@ -1993,7 +2127,7 @@ const main = ctx => {
 
 module.exports = main
 
-},{"./physicsEntity":7,"./playerEntity":6,"./birthEntity":8}],4:[function(require,module,exports) {
+},{"./physicsEntity":6,"./playerEntity":7,"./birthEntity":8,"./util":9}],4:[function(require,module,exports) {
 const create = (width, height) => {
   const canvas = document.createElement('canvas')
   canvas.width = width
@@ -2044,7 +2178,7 @@ const loop = _ => {
 
 loop()
 
-},{"./src/main":3,"./src/canvas":4,"./src/input":5}],16:[function(require,module,exports) {
+},{"./src/main":3,"./src/canvas":4,"./src/input":5}],17:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -2064,7 +2198,7 @@ module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
-  var ws = new WebSocket('ws://' + hostname + ':' + '62471' + '/');
+  var ws = new WebSocket('ws://' + hostname + ':' + '50278' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -2165,5 +2299,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[16,2])
+},{}]},{},[17,2])
 //# sourceMappingURL=/dist/squish.map
