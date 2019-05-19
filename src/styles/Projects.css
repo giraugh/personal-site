@@ -1,0 +1,33 @@
+.project-list {
+  width: 100%;
+  height: min-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.project {
+  display: grid;
+  grid-template-rows: 10fr 1fr 2fr;
+  row-gap: 3px;
+  height: 300px;
+  width: 100%;
+  padding: 7px;
+  background-color: rgb(224, 224, 224);
+  border-radius: 7px;
+}
+
+.project > .project-image {
+  width: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.project > .project-link {
+  text-decoration: none;
+  display: block;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: black;
+}

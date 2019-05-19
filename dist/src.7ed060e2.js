@@ -25960,7 +25960,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/Title.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/generic/Title.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25970,7 +25970,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("../styles/Title");
+require("../../styles/Title");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26008,7 +26008,7 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("h1", {
         className: "title"
-      }, "Entire Name");
+      }, this.props.title);
     }
   }]);
 
@@ -26016,7 +26016,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Title;
-},{"react":"../node_modules/react/index.js","../styles/Title":"../src/styles/Title.css"}],"../src/components/Bio.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../styles/Title":"../src/styles/Title.css"}],"../src/components/content/Bio.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26071,7 +26071,12 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Bio;
-},{"react":"../node_modules/react/index.js"}],"../src/components/Projects.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../src/styles/Subtitle.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/generic/Subtitle.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26080,6 +26085,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+require("../../styles/Subtitle");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26101,6 +26108,83 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var Subtitle =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Subtitle, _Component);
+
+  function Subtitle() {
+    _classCallCheck(this, Subtitle);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Subtitle).apply(this, arguments));
+  }
+
+  _createClass(Subtitle, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("h1", {
+        className: "subtitle"
+      }, this.props.title);
+    }
+  }]);
+
+  return Subtitle;
+}(_react.Component);
+
+exports.default = Subtitle;
+},{"react":"../node_modules/react/index.js","../../styles/Subtitle":"../src/styles/Subtitle.css"}],"../src/styles/Projects.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/content/Projects.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+require("../../styles/Projects");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var testData = [{
+  title: 'Hex-Redux',
+  description: 'An online tool for writing JS bots to play games of HEX.',
+  linkURL: 'http://ewanb.me/hex-redux',
+  imageURLS: ['http://ewanb.me/site/style/img/hex-redux.gif']
+}, {
+  title: 'Another Expert Telegram',
+  description: 'A match-several mobile game on the play store. Created using GameMaker: Studio.',
+  linkURL: 'https://play.google.com/store/apps/details?id=com.tdos.anothertelegram',
+  imageURLS: ['http://ewanb.me/site/style/img/knight.gif']
+}];
+
 var Projects =
 /*#__PURE__*/
 function (_Component) {
@@ -26117,7 +26201,26 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "projects"
-      }, "projects");
+      }, _react.default.createElement(_Subtitle.default, {
+        title: "Projects"
+      }), _react.default.createElement("div", {
+        className: "project-list"
+      }, testData.map(function (p) {
+        return _react.default.createElement("div", {
+          "class": "project",
+          key: p.title
+        }, _react.default.createElement("div", {
+          className: "project-image",
+          style: {
+            backgroundImage: "url(".concat(p.imageURLS[0], ")")
+          }
+        }), _react.default.createElement("a", {
+          className: "project-link",
+          href: p.linkURL
+        }, p.title), _react.default.createElement("span", {
+          className: "project-description"
+        }, p.description));
+      })));
     }
   }]);
 
@@ -26125,7 +26228,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Projects;
-},{"react":"../node_modules/react/index.js"}],"../src/components/Skills.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/Projects":"../src/styles/Projects.css"}],"../src/components/content/Skills.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26134,6 +26237,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26171,7 +26278,9 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "skills"
-      }, "skills");
+      }, _react.default.createElement(_Subtitle.default, {
+        title: "Skills"
+      }));
     }
   }]);
 
@@ -26179,7 +26288,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Skills;
-},{"react":"../node_modules/react/index.js"}],"../src/components/Education.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/components/content/Education.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26188,6 +26297,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26225,7 +26338,9 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "education"
-      }, "education");
+      }, _react.default.createElement(_Subtitle.default, {
+        title: "Education"
+      }));
     }
   }]);
 
@@ -26233,7 +26348,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Education;
-},{"react":"../node_modules/react/index.js"}],"../src/components/Employment.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/components/content/Employment.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26242,6 +26357,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26279,7 +26398,9 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "employment"
-      }, "employment");
+      }, _react.default.createElement(_Subtitle.default, {
+        title: "Employment"
+      }));
     }
   }]);
 
@@ -26287,7 +26408,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Employment;
-},{"react":"../node_modules/react/index.js"}],"../src/styles/Content.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/styles/Content.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26302,17 +26423,17 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Title = _interopRequireDefault(require("./Title"));
+var _Title = _interopRequireDefault(require("./generic/Title"));
 
-var _Bio = _interopRequireDefault(require("./Bio"));
+var _Bio = _interopRequireDefault(require("./content/Bio"));
 
-var _Projects = _interopRequireDefault(require("./Projects"));
+var _Projects = _interopRequireDefault(require("./content/Projects"));
 
-var _Skills = _interopRequireDefault(require("./Skills"));
+var _Skills = _interopRequireDefault(require("./content/Skills"));
 
-var _Education = _interopRequireDefault(require("./Education"));
+var _Education = _interopRequireDefault(require("./content/Education"));
 
-var _Employment = _interopRequireDefault(require("./Employment"));
+var _Employment = _interopRequireDefault(require("./content/Employment"));
 
 require("../styles/Content");
 
@@ -26354,7 +26475,9 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "content"
-      }, _react.default.createElement(_Title.default, null), _react.default.createElement(_Bio.default, null), _react.default.createElement(_Projects.default, null), _react.default.createElement(_Skills.default, null), _react.default.createElement(_Education.default, null), _react.default.createElement(_Employment.default, null));
+      }, _react.default.createElement(_Title.default, {
+        title: "First Breakey\b"
+      }), _react.default.createElement(_Bio.default, null), _react.default.createElement(_Projects.default, null), _react.default.createElement(_Skills.default, null), _react.default.createElement(_Education.default, null), _react.default.createElement(_Employment.default, null));
     }
   }]);
 
@@ -26362,7 +26485,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Content;
-},{"react":"../node_modules/react/index.js","./Title":"../src/components/Title.js","./Bio":"../src/components/Bio.js","./Projects":"../src/components/Projects.js","./Skills":"../src/components/Skills.js","./Education":"../src/components/Education.js","./Employment":"../src/components/Employment.js","../styles/Content":"../src/styles/Content.css"}],"../src/styles/App.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./generic/Title":"../src/components/generic/Title.js","./content/Bio":"../src/components/content/Bio.js","./content/Projects":"../src/components/content/Projects.js","./content/Skills":"../src/components/content/Skills.js","./content/Education":"../src/components/content/Education.js","./content/Employment":"../src/components/content/Employment.js","../styles/Content":"../src/styles/Content.css"}],"../src/styles/App.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26478,7 +26601,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64690" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49401" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
