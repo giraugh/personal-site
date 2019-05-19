@@ -1,0 +1,39 @@
+{
+  "name": "ebreakey-hpage",
+  "version": "1.0.0",
+  "description": "Ewan Breakey's home page.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retroverse/retroverse.github.io.git"
+  },
+  "keywords": [
+    "homepage",
+    "giraugh",
+    "retroverse",
+    "ewan",
+    "breakey",
+    "ewan",
+    "breakey",
+    "react"
+  ],
+  "author": "Ewan Breakey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/retroverse/retroverse.github.io/issues"
+  },
+  "homepage": "https://github.com/retroverse/retroverse.github.io#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^3.4.5"
+  }
+}

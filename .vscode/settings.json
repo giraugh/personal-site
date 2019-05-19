@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "CNAME": true,
+    ".gitignore": true,
+    "README.md": true,
+    ".vscode": true,
+    "package-lock.json": true,   
+    ".babelrc": true,
+    "r": true,
+    "node_modules": true,
+    ".cache": true,
+    "dist": true,
+  }
+}
