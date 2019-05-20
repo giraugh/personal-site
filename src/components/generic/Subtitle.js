@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../styles/Subtitle'
+import '../../styles/generic/Subtitle'
 
 export default class Subtitle extends Component {
   render () {

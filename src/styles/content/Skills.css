@@ -1,0 +1,17 @@
+.skill-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 30px;
+}
+
+.skill {
+  display: flex;
+  height: 3em;
+  align-items: center;
+}
+
+.skill > .skill-ability {
+  width: 100% !important;
+  height: 100%;
+}

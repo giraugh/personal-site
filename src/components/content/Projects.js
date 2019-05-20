@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Subtitle from '../generic/Subtitle'
 
-import '../../styles/Projects'
+import '../../styles/content/Projects'
 
 const testData = [
   {
@@ -25,11 +25,11 @@ export default class Projects extends Component {
         <Subtitle title='Projects' />
         <div className='project-list'>
           {
-            testData.map(p => (
-              <div class='project' key={p.title}>
-                <div className='project-image' style={{backgroundImage: `url(${p.imageURLS[0]})`}} />
-                <a className='project-link' href={p.linkURL}>{p.title}</a>
-                <span className='project-description'>{p.description}</span>
+            testData.map(project => (
+              <div className='project' key={project.title}>
+                <div className='project-image' style={{backgroundImage: `url(${project.imageURLS[0]})`}} />
+                <a className='project-link' href={project.linkURL}>{project.title}</a>
+                <span className='project-description'>{project.description}</span>
               </div>
             ))
           }

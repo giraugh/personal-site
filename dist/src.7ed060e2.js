@@ -25955,7 +25955,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = ProfilePicture;
-},{"react":"../node_modules/react/index.js","../styles/ProfilePicture.css":"../src/styles/ProfilePicture.css"}],"../src/styles/Title.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../styles/ProfilePicture.css":"../src/styles/ProfilePicture.css"}],"../src/styles/generic/Title.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -25970,7 +25970,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("../../styles/Title");
+require("../../styles/generic/Title");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26016,7 +26016,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Title;
-},{"react":"../node_modules/react/index.js","../../styles/Title":"../src/styles/Title.css"}],"../src/components/content/Bio.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../styles/generic/Title":"../src/styles/generic/Title.css"}],"../src/components/content/Bio.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26071,7 +26071,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Bio;
-},{"react":"../node_modules/react/index.js"}],"../src/styles/Subtitle.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../src/styles/generic/Subtitle.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26086,7 +26086,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("../../styles/Subtitle");
+require("../../styles/generic/Subtitle");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26132,7 +26132,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Subtitle;
-},{"react":"../node_modules/react/index.js","../../styles/Subtitle":"../src/styles/Subtitle.css"}],"../src/styles/Projects.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../styles/generic/Subtitle":"../src/styles/generic/Subtitle.css"}],"../src/styles/content/Projects.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26149,7 +26149,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
 
-require("../../styles/Projects");
+require("../../styles/content/Projects");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26205,21 +26205,21 @@ function (_Component) {
         title: "Projects"
       }), _react.default.createElement("div", {
         className: "project-list"
-      }, testData.map(function (p) {
+      }, testData.map(function (project) {
         return _react.default.createElement("div", {
-          "class": "project",
-          key: p.title
+          className: "project",
+          key: project.title
         }, _react.default.createElement("div", {
           className: "project-image",
           style: {
-            backgroundImage: "url(".concat(p.imageURLS[0], ")")
+            backgroundImage: "url(".concat(project.imageURLS[0], ")")
           }
         }), _react.default.createElement("a", {
           className: "project-link",
-          href: p.linkURL
-        }, p.title), _react.default.createElement("span", {
+          href: project.linkURL
+        }, project.title), _react.default.createElement("span", {
           className: "project-description"
-        }, p.description));
+        }, project.description));
       })));
     }
   }]);
@@ -26228,7 +26228,87 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Projects;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/Projects":"../src/styles/Projects.css"}],"../src/components/content/Skills.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/content/Projects":"../src/styles/content/Projects.css"}],"../src/styles/generic/PercentageBar.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/generic/PercentageBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("../../styles/generic/PercentageBar");
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+// accepts props, {percentage, label}
+var PercentageBar =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(PercentageBar, _Component);
+
+  function PercentageBar() {
+    _classCallCheck(this, PercentageBar);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PercentageBar).apply(this, arguments));
+  }
+
+  _createClass(PercentageBar, [{
+    key: "render",
+    value: function render() {
+      var p = Math.floor(this.props.percentage * 100);
+      var cols = "".concat(p, "fr ").concat(100 - p, "fr");
+      return _react.default.createElement("div", _extends({}, this.props, {
+        className: "percentage-bar ".concat(this.props.className),
+        style: {
+          gridTemplateColumns: cols
+        }
+      }), _react.default.createElement("div", {
+        className: "percentage-bar-complete percentage-bar-segment"
+      }, _react.default.createElement("span", {
+        className: "percentage-bar-label"
+      }, " ", this.props.label, " ")), _react.default.createElement("div", {
+        className: "percentage-bar-remaining percentage-bar-segment"
+      }));
+    }
+  }]);
+
+  return PercentageBar;
+}(_react.Component);
+
+exports.default = PercentageBar;
+},{"react":"../node_modules/react/index.js","../../styles/generic/PercentageBar":"../src/styles/generic/PercentageBar.css"}],"../src/styles/content/Skills.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/content/Skills.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26239,6 +26319,10 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+var _PercentageBar = _interopRequireDefault(require("../generic/PercentageBar"));
+
+require("../../styles/content/Skills");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26262,6 +26346,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var testData = [{
+  name: 'Javascript',
+  ability: 0.9
+}, {
+  name: 'Functional JS',
+  ability: 0.9
+}, {
+  name: 'React',
+  ability: 0.7
+}, {
+  name: 'ExpressJS',
+  ability: 0.5
+}, {
+  name: 'Lua',
+  ability: 0.6
+}];
+
 var Skills =
 /*#__PURE__*/
 function (_Component) {
@@ -26280,7 +26381,18 @@ function (_Component) {
         className: "skills"
       }, _react.default.createElement(_Subtitle.default, {
         title: "Skills"
-      }));
+      }), _react.default.createElement("div", {
+        className: "skill-list"
+      }, testData.map(function (skill) {
+        return _react.default.createElement("div", {
+          className: "skill",
+          key: skill.name
+        }, _react.default.createElement(_PercentageBar.default, {
+          className: "skill-ability",
+          percentage: skill.ability,
+          label: skill.name
+        }));
+      })));
     }
   }]);
 
@@ -26288,7 +26400,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Skills;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/components/content/Education.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../generic/PercentageBar":"../src/components/generic/PercentageBar.js","../../styles/content/Skills":"../src/styles/content/Skills.css"}],"../src/components/content/Education.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26601,7 +26713,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49401" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51530" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

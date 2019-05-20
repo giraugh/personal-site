@@ -20,5 +20,5 @@
   height: 15em;
   border-radius: 50%;
   border: var(--profile-border-w) solid var(--profile-border-col);
-  box-shadow: 0px 2px 5px 0px #000000c4;
+  box-shadow: 0px 1.5px 3px 4px #00000029;
 }

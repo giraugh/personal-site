@@ -1,0 +1,11 @@
+.title {
+  --title-col: #383838;
+
+  font-size: 4.5em;
+  text-align: center;
+  margin-bottom: .1em;
+  font-family: 'Archivo Narrow';
+  font-weight: normal;
+
+  color: var(--title-col);
+}
