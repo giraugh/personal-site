@@ -1,5 +1,5 @@
 .profile-picture {
-  --profile-border-col: #6c89b5;
+  --profile-border-col: var(--primary-col);
   --profile-border-w: 10px;
 
   display: flex;

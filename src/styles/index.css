@@ -3,6 +3,9 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: arial;
+
+  --primary-col: #6c89b5;
+  --secondary-col: salmon;
 }
 
 html {

@@ -5,8 +5,8 @@
   width: 80px;
 
   --bradius: 5px;
-  --complete-col: salmon;
-  --remaining-col: pink;
+  --complete-col: var(--primary-col);
+  --remaining-col: var(--secondary-col);
 }
 
 .percentage-bar-segment {

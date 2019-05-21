@@ -4,7 +4,7 @@
   box-shadow: inset -1px -3px 6px -6px #000000c4;
 }
 .profile-picture {
-  --profile-border-col: #6c89b5;
+  --profile-border-col: var(--primary-col);
   --profile-border-w: 10px;
 
   display: flex;
@@ -53,7 +53,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 10px;
-  column-gap: 10px;
+  column-gap: 20px;
+
+  --project-col: var(--primary-col);
 }
 
 .project {
@@ -64,8 +66,9 @@
   width: 100%;
   padding: 7px;
 
+  color: white;
   border-radius: 7px;
-  background-color: rgb(224, 224, 224);
+  background-color: var(--project-col);
   box-shadow: 0px 4.5px 1.2px -1px #0000003d;
 }
 
@@ -73,14 +76,17 @@
   width: 100%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+  box-shadow: inset 0px 0px 3px 0.5px #0000003d;
 }
 
 .project > .project-link {
-  text-decoration: none;
   display: block;
   font-size: 1.4em;
+  margin-top: 3px;
+
+  text-decoration: none;
   font-weight: bold;
-  color: black;
+  color: white;
 }
 .percentage-bar {
   display: grid;
@@ -89,8 +95,8 @@
   width: 80px;
 
   --bradius: 5px;
-  --complete-col: salmon;
-  --remaining-col: pink;
+  --complete-col: var(--primary-col);
+  --remaining-col: var(--secondary-col);
 }
 
 .percentage-bar-segment {
@@ -128,7 +134,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 10px;
-  column-gap: 30px;
+  column-gap: 20px;
 }
 
 .skill {
@@ -141,6 +147,58 @@
   width: 100% !important;
   height: 100%;
 }
+.education-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
+  --education-col: var(--primary-col);
+}
+
+.education-item {
+  display: grid;
+  height: 110px;
+  grid-template-rows: 3fr 2fr;
+  align-items: center;
+
+  color: white;
+  background: var(--education-col);
+  border-radius: 5px;
+  box-shadow: 0px 4.5px 1.2px -1px #0000003d;
+}
+
+.education-item > .education-first-half {
+  padding: 7px;
+}
+
+.education-item > .education-first-half > .education-first-line {
+  display: grid;
+  grid-template-columns: minmax(max-content, 2fr) 5fr;
+  justify-items: start;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 7px;
+}
+
+.education-item > .education-first-half > .education-first-line > .education-type {
+  font-size: 30px;
+}
+
+.education-item > .education-first-half > .education-first-line > .education-years {
+  font-style: italic;
+}
+
+.education-item > .education-notes {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: var(--secondary-col);
+  box-shadow: inset 0px 3px 3px -2px #0000005c;
+}
+
 .content {
   width: 100%;
   height: 100%;
@@ -167,6 +225,9 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: arial;
+
+  --primary-col: #6c89b5;
+  --secondary-col: salmon;
 }
 
 html {

@@ -26400,7 +26400,12 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Skills;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../generic/PercentageBar":"../src/components/generic/PercentageBar.js","../../styles/content/Skills":"../src/styles/content/Skills.css"}],"../src/components/content/Education.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../generic/PercentageBar":"../src/components/generic/PercentageBar.js","../../styles/content/Skills":"../src/styles/content/Skills.css"}],"../src/styles/content/Education.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/content/Education.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26411,6 +26416,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+require("../../styles/content/Education");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26434,6 +26441,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var testData = [{
+  type: 'High School',
+  notes: ['Academic Captain', 'G-Force IT Award'],
+  location: 'Belmont High School',
+  startYear: 2013,
+  endYear: 2019
+}];
+
 var Education =
 /*#__PURE__*/
 function (_Component) {
@@ -26452,7 +26467,26 @@ function (_Component) {
         className: "education"
       }, _react.default.createElement(_Subtitle.default, {
         title: "Education"
-      }));
+      }), _react.default.createElement("div", {
+        className: "education-list"
+      }, testData.map(function (education) {
+        return _react.default.createElement("div", {
+          className: "education-item",
+          key: education.type
+        }, _react.default.createElement("div", {
+          className: "education-first-half"
+        }, _react.default.createElement("div", {
+          className: "education-first-line"
+        }, _react.default.createElement("h2", {
+          className: "education-type"
+        }, " ", education.type, " "), _react.default.createElement("span", {
+          className: "education-years"
+        }, "".concat(education.startYear, " - ").concat(education.endYear))), _react.default.createElement("span", {
+          className: "education-location"
+        }, " ", education.location, " ")), _react.default.createElement("span", {
+          className: "education-notes"
+        }, " ", _react.default.createElement("span", null, education.notes.join(' • ')), " "));
+      })));
     }
   }]);
 
@@ -26460,7 +26494,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Education;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/components/content/Employment.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/content/Education":"../src/styles/content/Education.css"}],"../src/components/content/Employment.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26713,7 +26747,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51530" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54455" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
