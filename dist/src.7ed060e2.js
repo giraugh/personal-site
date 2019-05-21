@@ -26016,7 +26016,12 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Title;
-},{"react":"../node_modules/react/index.js","../../styles/generic/Title":"../src/styles/generic/Title.css"}],"../src/components/content/Bio.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../styles/generic/Title":"../src/styles/generic/Title.css"}],"../src/styles/content/Bio.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/content/Bio.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26025,6 +26030,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+require("../../styles/content/Bio");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -26062,8 +26069,7 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", {
         className: "bio"
-      }, "lorem ipsum ".repeat(32) // maybe just tags w/ • seperators?
-      );
+      }, this.props.bio);
     }
   }]);
 
@@ -26071,7 +26077,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Bio;
-},{"react":"../node_modules/react/index.js"}],"../src/styles/generic/Subtitle.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../styles/content/Bio":"../src/styles/content/Bio.css"}],"../src/styles/generic/Subtitle.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26346,23 +26352,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var testData = [{
-  name: 'Javascript',
-  ability: 0.9
-}, {
-  name: 'Functional JS',
-  ability: 0.9
-}, {
-  name: 'React',
-  ability: 0.7
-}, {
-  name: 'ExpressJS',
-  ability: 0.5
-}, {
-  name: 'Lua',
-  ability: 0.6
-}];
-
 var Skills =
 /*#__PURE__*/
 function (_Component) {
@@ -26383,7 +26372,7 @@ function (_Component) {
         title: "Skills"
       }), _react.default.createElement("div", {
         className: "skill-list"
-      }, testData.map(function (skill) {
+      }, this.props.skills.map(function (skill) {
         return _react.default.createElement("div", {
           className: "skill",
           key: skill.name
@@ -26441,14 +26430,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var testData = [{
-  type: 'High School',
-  notes: ['Academic Captain', 'G-Force IT Award'],
-  location: 'Belmont High School',
-  startYear: 2013,
-  endYear: 2019
-}];
-
 var Education =
 /*#__PURE__*/
 function (_Component) {
@@ -26469,7 +26450,7 @@ function (_Component) {
         title: "Education"
       }), _react.default.createElement("div", {
         className: "education-list"
-      }, testData.map(function (education) {
+      }, this.props.education.map(function (education) {
         return _react.default.createElement("div", {
           className: "education-item",
           key: education.type
@@ -26554,7 +26535,78 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Employment;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/styles/Content.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/config/profileData.ts":[function(require,module,exports) {
+"use strict";
+
+exports.__esModule = true;
+exports.skills = [{
+  name: 'Javascript',
+  ability: .9
+}, {
+  name: 'Functional JS',
+  ability: .9
+}, {
+  name: 'React',
+  ability: .7
+}, {
+  name: 'ExpressJS',
+  ability: .5
+}, {
+  name: 'Lua',
+  ability: .6
+}, {
+  name: 'C#',
+  ability: .4
+}, {
+  name: 'Haskell',
+  ability: .4
+}, {
+  name: 'Japanese Langauge',
+  ability: .2
+}, {
+  name: 'Indonesian Language',
+  ability: .4
+}, {
+  name: 'Design',
+  ability: .7
+}, {
+  name: 'Illustration',
+  ability: .4
+}];
+exports.education = [{
+  type: 'High School',
+  notes: ['Academic Captain', 'G-Force IT Award'],
+  location: 'Belmont High School',
+  startYear: 2013,
+  endYear: 2019
+}];
+exports.projects = [{
+  title: 'Hex-Redux',
+  description: 'An online tool for writing JS bots to play games of HEX.',
+  linkURL: 'http://ewanb.me/hex-redux',
+  imageURLS: []
+}, {
+  title: 'Another Expert Telegram',
+  description: 'A match-several mobile game on the play store. Created using GameMaker: Studio.',
+  linkURL: 'https://play.google.com/store/apps/details?id=com.tdos.anothertelegram',
+  imageURLS: []
+}];
+exports.employment = [{
+  businessName: 'Geelong Waterfront Bungy Trampolines',
+  notes: [],
+  startYear: 2016,
+  endYear: "Ongoing"
+}];
+var data = {
+  name: 'Ewan Breakey',
+  bio: "Student who likes to program, especially in purely functional languages.",
+  skills: exports.skills,
+  education: exports.education,
+  projects: exports.projects,
+  employment: exports.employment
+};
+exports["default"] = data;
+},{}],"../src/styles/Content.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26580,6 +26632,8 @@ var _Skills = _interopRequireDefault(require("./content/Skills"));
 var _Education = _interopRequireDefault(require("./content/Education"));
 
 var _Employment = _interopRequireDefault(require("./content/Employment"));
+
+var _profileData = _interopRequireDefault(require("../config/profileData"));
 
 require("../styles/Content");
 
@@ -26622,8 +26676,14 @@ function (_Component) {
       return _react.default.createElement("div", {
         className: "content"
       }, _react.default.createElement(_Title.default, {
-        title: "First Breakey\b"
-      }), _react.default.createElement(_Bio.default, null), _react.default.createElement(_Projects.default, null), _react.default.createElement(_Skills.default, null), _react.default.createElement(_Education.default, null), _react.default.createElement(_Employment.default, null));
+        title: _profileData.default.name
+      }), _react.default.createElement(_Bio.default, {
+        bio: _profileData.default.bio
+      }), _react.default.createElement(_Projects.default, null), _react.default.createElement(_Skills.default, {
+        skills: _profileData.default.skills
+      }), _react.default.createElement(_Education.default, {
+        education: _profileData.default.education
+      }), _react.default.createElement(_Employment.default, null));
     }
   }]);
 
@@ -26631,7 +26691,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Content;
-},{"react":"../node_modules/react/index.js","./generic/Title":"../src/components/generic/Title.js","./content/Bio":"../src/components/content/Bio.js","./content/Projects":"../src/components/content/Projects.js","./content/Skills":"../src/components/content/Skills.js","./content/Education":"../src/components/content/Education.js","./content/Employment":"../src/components/content/Employment.js","../styles/Content":"../src/styles/Content.css"}],"../src/styles/App.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./generic/Title":"../src/components/generic/Title.js","./content/Bio":"../src/components/content/Bio.js","./content/Projects":"../src/components/content/Projects.js","./content/Skills":"../src/components/content/Skills.js","./content/Education":"../src/components/content/Education.js","./content/Employment":"../src/components/content/Employment.js","../config/profileData":"../src/config/profileData.ts","../styles/Content":"../src/styles/Content.css"}],"../src/styles/App.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -26747,7 +26807,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54455" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54577" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

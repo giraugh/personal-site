@@ -1,6 +1,6 @@
 import {SkillItem, ProfileData, EducationItem, ProjectItem, EmploymentItem} from './profileData-t'
 
-const skills : SkillItem[] = [
+export const skills : SkillItem[] = [
   {
     name: 'Javascript',
     ability: .9
@@ -47,7 +47,7 @@ const skills : SkillItem[] = [
   }
 ]
 
-const education : EducationItem[] = [
+export const education : EducationItem[] = [
   {
     type: 'High School',
     notes: ['Academic Captain', 'G-Force IT Award'],
@@ -57,7 +57,7 @@ const education : EducationItem[] = [
   }
 ]
 
-const projects : ProjectItem[] = [
+export const projects : ProjectItem[] = [
   {
     title: 'Hex-Redux',
     description: 'An online tool for writing JS bots to play games of HEX.',
@@ -72,7 +72,7 @@ const projects : ProjectItem[] = [
   }
 ]
 
-const employment : EmploymentItem[] = [
+export const employment : EmploymentItem[] = [
   {
     businessName: 'Geelong Waterfront Bungy Trampolines',
     notes: [],
@@ -83,12 +83,7 @@ const employment : EmploymentItem[] = [
 
 const data : ProfileData = {
   name: 'Ewan Breakey',
-  bio: `Student who likes to program, especially in purely functional languages.
-        Web is cool too I guess. Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum`,
+  bio: `Student who likes to program, especially in purely functional languages.`,
   skills,
   education,
   projects,

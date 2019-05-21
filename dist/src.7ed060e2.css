@@ -38,6 +38,9 @@
 
   color: var(--title-col);
 }
+.bio {
+  text-align: center;
+}
 .subtitle {
   --title-col: #383838;
 
