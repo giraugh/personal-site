@@ -27,15 +27,15 @@ export const skills : SkillItem[] = [
   },
   {
     name: 'Haskell',
-    ability: .4
+    ability: .45
   },
   {
-    name: 'Japanese Langauge',
-    ability: .2
+    name: 'Japanese',
+    ability: .3
   },
   {
-    name: 'Indonesian Language',
-    ability: .4
+    name: 'Indonesian',
+    ability: .35
   },
   {
     name: 'Design',
@@ -74,8 +74,8 @@ export const projects : ProjectItem[] = [
 
 export const employment : EmploymentItem[] = [
   {
-    businessName: 'Geelong Waterfront Bungy Trampolines',
-    notes: [],
+    name: 'Attraction Ride Operator',
+    notes: ['Customer Service', 'Sales', 'Safety'],
     startYear: 2016,
     endYear: "Ongoing"
   }

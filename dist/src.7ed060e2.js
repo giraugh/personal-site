@@ -26475,7 +26475,12 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Education;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/content/Education":"../src/styles/content/Education.css"}],"../src/components/content/Employment.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/content/Education":"../src/styles/content/Education.css"}],"../src/styles/content/Employment.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/content/Employment.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26486,6 +26491,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Subtitle = _interopRequireDefault(require("../generic/Subtitle"));
+
+require("../../styles/content/Employment");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26527,7 +26534,24 @@ function (_Component) {
         className: "employment"
       }, _react.default.createElement(_Subtitle.default, {
         title: "Employment"
-      }));
+      }), _react.default.createElement("div", {
+        className: "employment-list"
+      }, this.props.employment.map(function (employment) {
+        return _react.default.createElement("div", {
+          className: "employment-item",
+          key: employment.name + ':' + employment.startYear
+        }, _react.default.createElement("div", {
+          className: "employment-first-half"
+        }, _react.default.createElement("div", {
+          className: "employment-first-line"
+        }, _react.default.createElement("h2", {
+          className: "employment-type"
+        }, " ", employment.name, " "), _react.default.createElement("span", {
+          className: "employment-years"
+        }, "".concat(employment.startYear, " - ").concat(employment.endYear)))), _react.default.createElement("span", {
+          className: "employment-notes"
+        }, " ", _react.default.createElement("span", null, employment.notes.join(' • ')), " "));
+      })));
     }
   }]);
 
@@ -26535,7 +26559,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Employment;
-},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js"}],"../src/config/profileData.ts":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../generic/Subtitle":"../src/components/generic/Subtitle.js","../../styles/content/Employment":"../src/styles/content/Employment.css"}],"../src/config/profileData.ts":[function(require,module,exports) {
 "use strict";
 
 exports.__esModule = true;
@@ -26559,13 +26583,13 @@ exports.skills = [{
   ability: .4
 }, {
   name: 'Haskell',
-  ability: .4
+  ability: .45
 }, {
-  name: 'Japanese Langauge',
-  ability: .2
+  name: 'Japanese',
+  ability: .3
 }, {
-  name: 'Indonesian Language',
-  ability: .4
+  name: 'Indonesian',
+  ability: .35
 }, {
   name: 'Design',
   ability: .7
@@ -26592,8 +26616,8 @@ exports.projects = [{
   imageURLS: []
 }];
 exports.employment = [{
-  businessName: 'Geelong Waterfront Bungy Trampolines',
-  notes: [],
+  name: 'Attraction Ride Operator',
+  notes: ['Customer Service', 'Sales', 'Safety'],
   startYear: 2016,
   endYear: "Ongoing"
 }];
@@ -26683,7 +26707,9 @@ function (_Component) {
         skills: _profileData.default.skills
       }), _react.default.createElement(_Education.default, {
         education: _profileData.default.education
-      }), _react.default.createElement(_Employment.default, null));
+      }), _react.default.createElement(_Employment.default, {
+        employment: _profileData.default.employment
+      }));
     }
   }]);
 
@@ -26807,7 +26833,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54577" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50153" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

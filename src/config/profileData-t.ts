@@ -20,7 +20,7 @@ export type SkillItem = {
 }
 
 export type EmploymentItem = {
-  businessName : String, // name of employer / employing business
+  name : String, // name of employer / employing business
   notes? : String[],
   startYear : Number,
   endYear : Number | "Ongoing",

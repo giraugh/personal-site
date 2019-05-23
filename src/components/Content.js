@@ -18,7 +18,7 @@ export default class Content extends Component {
         <Projects />
         <Skills skills={profileData.skills} />
         <Education education={profileData.education} />
-        <Employment />
+        <Employment employment={profileData.employment} />
       </div>
     )
   }
