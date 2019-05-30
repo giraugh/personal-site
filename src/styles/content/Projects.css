@@ -3,8 +3,8 @@
   height: min-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 10px;
-  column-gap: 20px;
+  row-gap: 15px;
+  column-gap: 15px;
 
   --project-col: var(--primary-col);
 }
@@ -28,6 +28,7 @@
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
   box-shadow: inset 0px 0px 3px 0.5px #0000003d;
+  background-size: cover;
 }
 
 .project > .project-link {
@@ -38,4 +39,8 @@
   text-decoration: none;
   font-weight: bold;
   color: white;
+}
+
+.project-link:hover {
+  text-decoration: underline;
 }

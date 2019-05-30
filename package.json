@@ -36,5 +36,11 @@
     "react-dom": "^16.8.6",
     "typescript": "^3.4.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "static": "^2.0.0"
+  },
+  "parcel-plugin-static": {
+    "source": "static",
+    "destination": "static"
+  }
 }

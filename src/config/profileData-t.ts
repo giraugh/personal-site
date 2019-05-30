@@ -32,5 +32,5 @@ export type ProfileData = {
   skills : SkillItem[],
   education: EducationItem[],
   projects: ProjectItem[],
-  employment: EmploymentItem[],
+  employment: EmploymentItem[]
 }

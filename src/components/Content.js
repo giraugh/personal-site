@@ -5,20 +5,20 @@ import Projects from './content/Projects'
 import Skills from './content/Skills'
 import Education from './content/Education'
 import Employment from './content/Employment'
-import profileData from '../config/profileData'
 
 import '../styles/Content'
 
 export default class Content extends Component {
   render () {
+    const pd = this.props.profileData
     return (
       <div className='content'>
-        <Title title={profileData.name} />
-        <Bio bio={profileData.bio} />
-        <Projects />
-        <Skills skills={profileData.skills} />
-        <Education education={profileData.education} />
-        <Employment employment={profileData.employment} />
+        <Title title={pd.name} />
+        <Bio bio={pd.bio} />
+        <Projects projects={pd.projects} />
+        <Skills skills={pd.skills} />
+        <Education education={pd.education} />
+        <Employment employment={pd.employment} />
       </div>
     )
   }
