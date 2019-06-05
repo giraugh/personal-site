@@ -4,47 +4,47 @@ const homePageImagesURL = 'http://retroverse.github.io/homepage-resources/img'
 export const skills : SkillItem[] = [
   {
     name: 'Javascript',
-    ability: .9
+    abilityLabel: '6 years'
   },
   {
     name: 'Functional JS',
-    ability: .9
+    abilityLabel: '4 years'
   },
   {
     name: 'React',
-    ability: .7
+    abilityLabel: '2 years'
   },
   {
     name: 'ExpressJS',
-    ability: .5
+    abilityLabel: '2 years'
   },
   {
     name: 'Lua',
-    ability: .6
+    abilityLabel: '3 years'
   },
   {
     name: 'C#',
-    ability: .4
+    abilityLabel: '2 years'
   },
   {
     name: 'Haskell',
-    ability: .45
+    abilityLabel: '2 years'
   },
   {
     name: 'Japanese',
-    ability: .3
+    abilityLabel: '< 1 year'
   },
   {
     name: 'Indonesian',
-    ability: .35
+    abilityLabel: '6 years'
   },
   {
     name: 'Design',
-    ability: .7
+    abilityLabel: '3 years'
   },
   {
     name: 'Illustration',
-    ability: .4
+    abilityLabel: '2 year'
   }
 ]
 
@@ -167,9 +167,12 @@ Additionally, I have studied several real-world languages, namely, Indonesian an
 I really enjoy user interface design and composition work.
 `
 
+export const footerText = `Ewan Breakey 2019~github~twitter`
+
 const data : ProfileData = {
   name: 'Ewan Breakey',
   bio: `An Australian Student who likes to make stuff, especially with computers.`,
+  footerText,
   skills,
   skillsDescription,
   education,

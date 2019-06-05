@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Subtitle from '../generic/Subtitle'
-import PercentageBar from '../generic/PercentageBar'
 
 import '../../styles/content/Skills'
 
@@ -18,7 +17,10 @@ export default class Skills extends Component {
           {
             this.props.skills.map(skill => (
               <div className='skill' key={skill.name}>
-                <PercentageBar className='skill-ability' percentage={skill.ability} label={skill.name} />
+                <div className='skill-name'> {skill.name} </div>
+                <div className='skill-ability-label'>
+                  <span>{skill.abilityLabel}</span>
+                </div>
               </div>
             ))
           }

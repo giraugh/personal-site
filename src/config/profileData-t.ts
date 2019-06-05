@@ -15,7 +15,7 @@ export type ProjectItem = {
 
 export type SkillItem = {
   name : String, // Name of skill
-  ability : Number, // Float from 0 to 1 - a measure of ability in that skill
+  abilityLabel : String,
   iconURL? : String, // url pointing to skill icon
 }
 
@@ -29,6 +29,7 @@ export type EmploymentItem = {
 export type ProfileData = {
   name : String,
   bio : String,
+  footerText : String,
   skills : SkillItem[],
   skillsDescription: String,
   education: EducationItem[],

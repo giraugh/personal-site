@@ -6,6 +6,8 @@
 
   --primary-col: #6c89b5;
   --secondary-col: salmon;
+  --shadow-out-col: #0000003d;
+  --shadow-in-col: #0000005c;
 }
 
 html {

@@ -1,5 +1,5 @@
 .app {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: grid;
   grid-template-rows: minmax(200px, 4fr) 0fr 6fr;

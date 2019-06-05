@@ -20,14 +20,14 @@
   color: white;
   border-radius: 7px;
   background-color: var(--project-col);
-  box-shadow: 0px 4.5px 1.2px -1px #0000003d;
+  box-shadow: 0px 4.5px 1.2px -1px var(--shadow-out-col);
 }
 
 .project > .project-image {
   width: 100%;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  box-shadow: inset 0px 0px 3px 0.5px #0000003d;
+  box-shadow: inset 0px 0px 3px 0.5px var(--shadow-in-col);
   background-size: cover;
 }
 
