@@ -8,6 +8,8 @@
   --secondary-col: salmon;
   --shadow-out-col: #0000003d;
   --shadow-in-col: #0000005c;
+
+  --headings-height: 50px;
 }
 
 html {

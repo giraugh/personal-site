@@ -3,7 +3,7 @@
   height: 100%;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 8em;
+  padding-top: calc(8.5em - var(--headings-height));
   background: whitesmoke;
   padding-bottom: 80px;
 }

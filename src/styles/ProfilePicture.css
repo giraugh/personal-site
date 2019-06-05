@@ -6,10 +6,10 @@
   align-items: center;
   justify-content: center;
   height: 0px;
-  border: calc(var(--profile-border-w) / 2.0) solid var(--profile-border-col);
+  /* border: calc(var(--profile-border-w) / 2.0) solid var(--profile-border-col); */
 
   background-color: var(--profile-border-col);
-  z-index: 1;
+  z-index: 2;
 }
 
 .profile-picture > span {
