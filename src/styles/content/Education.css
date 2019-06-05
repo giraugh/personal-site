@@ -49,3 +49,9 @@
   background: var(--secondary-col);
   box-shadow: inset 0px 3px 3px -2px #0000005c;
 }
+
+@media screen and (max-width: 700px) {
+  .education-list {
+    grid-template-columns: 1fr;
+  }
+}

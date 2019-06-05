@@ -61,19 +61,19 @@ export const education : EducationItem[] = [
 export const projects : ProjectItem[] = [
   {
     title: 'Hex-Redux',
-    description: 'An online tool for writing JS bots to play games of HEX.',
+    description: 'An online tool for writing and testing javascript bots that play games of HEX.',
     linkURL: 'http://ewanb.me/hex-redux',
     imageURLS: [`${homePageImagesURL}/projects/hex-redux.gif`]
   },
   {
     title: 'Another Expert Telegram',
-    description: 'A match-several mobile game on the play store. Created using GameMaker: Studio.',
+    description: 'A match-several mobile game on the play store.',
     linkURL: 'https://play.google.com/store/apps/details?id=com.tdos.anothertelegram',
     imageURLS: [`${homePageImagesURL}/projects/expert.gif`]
   },
   {
     title: 'Knight Game',
-    description: 'A platformer MOBA made for ACMI screenit 2017. Winner of secondary video game ACMI screen-it 2017.',
+    description: 'A platforming MOBA. Winner of secondary video game ACMI screen-it 2017.',
     linkURL: 'https://tdos.itch.io/knight-game',
     imageURLS: [`${homePageImagesURL}/projects/knight.gif`]
   },
@@ -91,7 +91,7 @@ export const projects : ProjectItem[] = [
   },
   {
     title: 'Galana',
-    description: 'A brutal minimalist scrolling shooter with cool boss battles.',
+    description: 'An unfinished brutal and minimalist scrolling shooter with epic boss battles.',
     linkURL: '',
     imageURLS: [`${homePageImagesURL}/projects/galana.gif`]
   },
@@ -160,10 +160,18 @@ export const employment : EmploymentItem[] = [
   }
 ]
 
+export const skillsDescription = `
+I have studied programming extensively in many languages and have a
+particular passion for functional programming with languages like Haskell and Javascript.
+Additionally, I have studied several real-world languages, namely, Indonesian and Japanese. On top of that,
+I really enjoy user interface design and composition work.
+`
+
 const data : ProfileData = {
   name: 'Ewan Breakey',
-  bio: `Student who likes to program, especially in purely functional languages.`,
+  bio: `An Australian Student who likes to make stuff, especially with computers.`,
   skills,
+  skillsDescription,
   education,
   projects,
   employment,

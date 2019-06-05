@@ -5,6 +5,16 @@
   column-gap: 20px;
 }
 
+.skills-description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.skills-description > p {
+  font-family: 'Lato', sans-serif;
+}
+
 .skill {
   display: flex;
   height: 3em;

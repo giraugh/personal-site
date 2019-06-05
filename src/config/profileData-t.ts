@@ -30,6 +30,7 @@ export type ProfileData = {
   name : String,
   bio : String,
   skills : SkillItem[],
+  skillsDescription: String,
   education: EducationItem[],
   projects: ProjectItem[],
   employment: EmploymentItem[]

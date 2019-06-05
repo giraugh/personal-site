@@ -16,7 +16,7 @@ export default class Content extends Component {
         <Title title={pd.name} />
         <Bio bio={pd.bio} />
         <Projects projects={pd.projects} />
-        <Skills skills={pd.skills} />
+        <Skills skills={pd.skills} skillsDescription={pd.skillsDescription} />
         <Education education={pd.education} />
         <Employment employment={pd.employment} />
       </div>

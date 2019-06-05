@@ -44,3 +44,12 @@
 .project-link:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 700px) {
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  .project {
+    height: 270px;
+  }
+}

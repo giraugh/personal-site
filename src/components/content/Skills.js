@@ -9,6 +9,11 @@ export default class Skills extends Component {
     return (
       <div className='skills'>
         <Subtitle title='Skills' />
+        <div className='skills-description'>
+          <p>
+            { this.props.skillsDescription }
+          </p>
+        </div>
         <div className='skill-list'>
           {
             this.props.skills.map(skill => (
