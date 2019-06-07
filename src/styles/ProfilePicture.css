@@ -16,9 +16,18 @@
   display: inline-block;
   background-size: contain;
   background-position: center center;
-  width: 15em;
-  height: 15em;
+  width: var(--profile-picture-size);
+  height: var(--profile-picture-size);
   border-radius: 50%;
   border: var(--profile-border-w) solid var(--profile-border-col);
   box-shadow: 0px 1.5px 3px 4px #00000029;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-picture {
+    justify-content: start;
+  }
+  .profile-picture > span {
+    margin-left: var(--profile-picture-margin);
+  }
 }

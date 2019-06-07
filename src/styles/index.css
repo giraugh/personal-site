@@ -9,7 +9,11 @@
   --shadow-out-col: #0000003d;
   --shadow-in-col: #0000005c;
 
+  --title-col: #383838;
+
   --headings-height: 50px;
+  --profile-picture-size: 15em;
+  --profile-picture-margin: 20px;
 }
 
 html {
