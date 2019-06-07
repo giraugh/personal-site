@@ -1,0 +1,42 @@
+.percentage-bar {
+  display: grid;
+  column-gap: 10px;
+  height: 20px;
+  width: 80px;
+
+  --bradius: 5px;
+  --complete-col: var(--primary-col);
+  --remaining-col: var(--secondary-col);
+}
+
+.percentage-bar-segment {
+  display: flex;
+  height: 100%;
+
+  border-radius: var(--bradius);
+  box-shadow: 0px 4.5px 1.2px -1px var(--shadow-out-col);
+}
+
+.percentage-bar-complete {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  background-color: var(--complete-col);
+}
+
+.percentage-bar-remaining {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+
+  background-color: var(--remaining-col);
+}
+
+.percentage-bar-label {
+  align-self: center;
+  justify-self: center;
+  color: white;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 10px;
+  font-weight: bold;
+}
