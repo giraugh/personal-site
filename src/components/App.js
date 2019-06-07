@@ -14,7 +14,7 @@ export default class App extends Component {
       <div className='app'>
         <Banner bannerImageURL={styleData.bannerImageURL} />
         <ProfilePicture profilePictureImageURL={styleData.profilePictureImageURL} />
-        <Headings socialIcons={styleData.socialIcons} />
+        <Headings />
         <Content profileData={profileData} />
         <Footer footerText={profileData.footerText} />
       </div>

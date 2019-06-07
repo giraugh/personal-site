@@ -1,7 +1,7 @@
 .headings {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 160px;
+  column-gap: 210px;
   align-items: center;
   justify-items: center;
   width: 100%;
@@ -26,7 +26,7 @@
   width: 100%;
   height: 100%;
   color: white;
-  font-size: 23px;
+  font-size: 40px;
 
   /* font-weight: bold; */
   text-decoration: none;
@@ -47,14 +47,11 @@
   background: whitesmoke;
 }
 
-.heading-icon {
-  width: 2.5em;
-  margin: .2em;
-  filter: invert(100%);
-}
-
 @media screen and (max-width: 800px) {
   .headings-side {
     grid-template-columns: 1fr !important;
+  }
+  .heading.disabled {
+    display: none;
   }
 }
