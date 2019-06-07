@@ -46,3 +46,15 @@
   color: var(--secondary-col);
   background: whitesmoke;
 }
+
+.heading-icon {
+  width: 2.5em;
+  margin: .2em;
+  filter: invert(100%);
+}
+
+@media screen and (max-width: 800px) {
+  .headings-side {
+    grid-template-columns: 1fr !important;
+  }
+}
