@@ -16,6 +16,7 @@
   display: inline-block;
   background-size: contain;
   background-position: center center;
+  background-color: white; /* DEFAULT COLOUR BEFORE IMAGE LOAD */
   width: var(--profile-picture-size);
   height: var(--profile-picture-size);
   border-radius: 50%;
