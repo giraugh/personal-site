@@ -11,10 +11,17 @@ export default class Projects extends Component {
         <div className='project-list'>
           {
             this.props.projects.map(project => (
-              <div className='project' key={project.title}>
+              <div className={`project ${project.linkURL !== '' && 'linked'}`} key={project.title}>
                 <div className='project-image' style={{backgroundImage: `url(${project.imageURLS[0]})`}} />
-                <a className='project-link' href={project.linkURL}>{project.title}</a>
+                <a className='project-title'>{project.title}</a>
                 <span className='project-description'>{project.description}</span>
+                {
+                  project.linkURL !== '' && (
+                    <a className='project-link' href={project.linkURL}>
+                      <span className='link-spanner'> {/**/} </span>
+                    </a>
+                  )
+                }
               </div>
             ))
           }
