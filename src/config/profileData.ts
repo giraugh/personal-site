@@ -171,7 +171,7 @@ export const footerText = `Ewan Breakey 2019~github~twitter`
 
 const data : ProfileData = {
   name: 'Ewan Breakey',
-  bio: `An Australian Student who likes to make stuff, especially with computers.`,
+  bio: `An australian student who likes to make stuff, especially with computers.`,
   footerText,
   skills,
   skillsDescription,
