@@ -31,12 +31,12 @@ export const skills : SkillItem[] = [
     abilityLabel: '2 years'
   },
   {
-    name: 'Japanese',
-    abilityLabel: '< 1 year'
+    name: 'Rust',
+    abilityLabel: '< 1 Year'
   },
   {
-    name: 'Indonesian',
-    abilityLabel: '6 years'
+    name: 'Japanese',
+    abilityLabel: '1 year'
   },
   {
     name: 'Design',
@@ -55,6 +55,13 @@ export const education : EducationItem[] = [
     location: 'Belmont High School',
     startYear: 2013,
     endYear: 2019
+  },
+  {
+    type: 'Computer Science',
+    notes: [],
+    location: 'RMIT',
+    startYear: 2020,
+    endYear: "Ongoing"
   }
 ]
 
