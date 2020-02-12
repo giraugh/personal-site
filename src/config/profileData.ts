@@ -168,7 +168,7 @@ export const employment : EmploymentItem[] = [
 ]
 
 export const skillsDescription = `
-I have studied programming extensively in many languages and have a
+I have studied programming now for a handful of years and have a
 particular passion for functional programming with languages like Haskell and Javascript.
 Additionally, I have studied several real-world languages, namely, Indonesian and Japanese. On top of that,
 I really enjoy user interface design and composition work.
