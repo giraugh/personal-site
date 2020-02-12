@@ -174,7 +174,7 @@ Additionally, I have studied several real-world languages, namely, Indonesian an
 I really enjoy user interface design and composition work.
 `
 
-export const footerText = `Ewan Breakey 2019~github~twitter`
+export const footerText = `Ewan Breakey 2020~github~twitter`
 
 const data : ProfileData = {
   name: 'Ewan Breakey',
