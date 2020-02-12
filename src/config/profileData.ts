@@ -92,15 +92,21 @@ export const projects : ProjectItem[] = [
   },
   {
     title: 'Fish Boy',
-    description: 'An endless platforming game made for Ludum Dare 39.',
+    description: 'An endless platforming game made for Ludum Dare 39. Made in cooperation with LogBoi.',
     linkURL: 'https://tdos.itch.io/fishy',
     imageURLS: [`${homePageImagesURL}/projects/fish.gif`]
   },
   {
     title: 'Galana',
-    description: 'An unfinished brutal and minimalist scrolling shooter with epic boss battles.',
-    linkURL: '',
+    description: 'A brutal and minimalist scrolling shooter with epic boss battles for android phones.',
+    linkURL: 'https://tdos.itch.io/galana',
     imageURLS: [`${homePageImagesURL}/projects/galana.gif`]
+  },
+  {
+    title: 'Clink',
+    description: 'An 8-bit adventure game made in pico-8.',
+    linkURL: 'http://ewanb.me/clink',
+    imageURLS: [`${homePageImagesURL}/projects/clink.png`]
   },
   {
     title: 'RL',
@@ -127,12 +133,6 @@ export const projects : ProjectItem[] = [
     imageURLS: [`${homePageImagesURL}/projects/spades.png`]
   },
   {
-    title: 'Clink',
-    description: 'An 8-bit adventure game made in pico-8.',
-    linkURL: 'http://ewanb.me/clink',
-    imageURLS: [`${homePageImagesURL}/projects/clink.png`]
-  },
-  {
     title: 'Pacmascii',
     description: 'Pacman in ASCII',
     linkURL: 'http://ewanb.me/pacmascii',
@@ -152,7 +152,7 @@ export const projects : ProjectItem[] = [
   },
   {
     title: 'Tricky Behind Shot',
-    description: 'An unfinished simplistic board game for mobile devices.',
+    description: 'An unfinished simplistic board game for mobile devices and the web.',
     linkURL: '',
     imageURLS: [`${homePageImagesURL}/projects/tbs.png`]
   }
@@ -178,7 +178,7 @@ export const footerText = `Ewan Breakey 2019~github~twitter`
 
 const data : ProfileData = {
   name: 'Ewan Breakey',
-  bio: `An australian student who likes to make stuff, especially with computers.`,
+  bio: ``,
   footerText,
   skills,
   skillsDescription,
