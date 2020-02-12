@@ -54,7 +54,7 @@ export const education : EducationItem[] = [
     notes: ['Academic Captain', 'G-Force IT Award'],
     location: 'Belmont High School',
     startYear: 2013,
-    endYear: "Ongoing"
+    endYear: 2019
   }
 ]
 
