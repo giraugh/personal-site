@@ -156,7 +156,7 @@ export const employment : EmploymentItem[] = [
     name: 'Attraction Ride Operator',
     notes: ['Customer Service', 'Sales', 'Safety'],
     startYear: 2016,
-    endYear: "Ongoing"
+    endYear: 2020
   }
 ]
 
