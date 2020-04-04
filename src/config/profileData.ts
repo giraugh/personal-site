@@ -57,7 +57,7 @@ export const education : EducationItem[] = [
     endYear: 2019
   },
   {
-    type: 'Computer Science',
+    type: 'Bsc. Computer Science',
     notes: [],
     location: 'RMIT',
     startYear: 2020,
