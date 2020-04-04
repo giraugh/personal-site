@@ -135,7 +135,7 @@ export const projects : ProjectItem[] = [
   {
     title: 'Pacmascii',
     description: 'Pacman in ASCII',
-    linkURL: 'http://ewanb.me/pacmascii',
+    linkURL: 'http://ewanb.me/Pacmascii',
     imageURLS: [`${homePageImagesURL}/projects/pacmascii.png`]
   },
   {
