@@ -62,6 +62,20 @@ export const education : EducationItem[] = [
     location: 'RMIT',
     startYear: 2020,
     endYear: "Ongoing"
+  },
+  {
+    type: 'Cert. IV - Hospitality',
+    notes: [],
+    location: 'RMIT',
+    startYear: 2020,
+    endYear: "Ongoing"
+  },
+  {
+    type: 'Cert. IV - Leadership and Management',
+    notes: [],
+    location: 'RMIT',
+    startYear: 2020,
+    endYear: "Ongoing"
   }
 ]
 
@@ -164,14 +178,27 @@ export const employment : EmploymentItem[] = [
     notes: ['Customer Service', 'Sales', 'Safety'],
     startYear: 2016,
     endYear: 2020
+  },
+  {
+    name: 'Programming Tutor',
+    notes: ['Education', 'Computer Science', 'Self-Employed'],
+    startYear: 2020,
+    endYear: 'Ongoing'
   }
 ]
 
+// export const skillsDescription = `
+// I have studied programming now for a handful of years and have a
+// particular passion for functional programming with languages like Haskell and Javascript.
+// Additionally, I have studied several real-world languages, namely, Indonesian and Japanese. On top of that,
+// I really enjoy user interface design and composition work.
+// `
+
 export const skillsDescription = `
-I have studied programming now for a handful of years and have a
-particular passion for functional programming with languages like Haskell and Javascript.
-Additionally, I have studied several real-world languages, namely, Indonesian and Japanese. On top of that,
-I really enjoy user interface design and composition work.
+I have a love for programming and have been self-teaching for several years now. Over this time, I have developed a
+great passion for functional programming such as with Haskell and Javascript. Recently I have begun tutoring in
+basic programming and sharing my knowledge with others. Aside from computer science, I enjoy design work, illustration and
+learning Japanese.
 `
 
 export const footerText = `Ewan Breakey 2020~github~twitter`
