@@ -64,16 +64,16 @@ export const education : EducationItem[] = [
     endYear: "Ongoing"
   },
   {
-    type: 'Cert. IV - Hospitality',
+    type: 'C4 Hospitality',
     notes: [],
-    location: 'RMIT',
+    location: 'Serve It Up',
     startYear: 2020,
     endYear: "Ongoing"
   },
   {
-    type: 'Cert. IV - Leadership and Management',
+    type: 'C4 Leadership & Management',
     notes: [],
-    location: 'RMIT',
+    location: 'Serve It Up',
     startYear: 2020,
     endYear: "Ongoing"
   }
@@ -201,7 +201,7 @@ basic programming and sharing my knowledge with others. Aside from computer scie
 learning Japanese.
 `
 
-export const footerText = `Ewan Breakey 2020~github~twitter`
+export const footerText = `Ewan Breakey 2020~github~twitter~itch.io`
 
 const data : ProfileData = {
   name: 'Ewan Breakey',

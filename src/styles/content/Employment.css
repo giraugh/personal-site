@@ -24,7 +24,7 @@
 
 .employment-item > .employment-first-half > .employment-first-line {
   display: grid;
-  grid-template-columns: minmax(max-content, 2fr) 5fr;
+  grid-template-columns: minmax(max-content, 1fr) 5fr;
   justify-items: start;
   align-items: center;
   column-gap: 10px;

@@ -5,11 +5,13 @@ import '../styles/Footer'
 const toLink = (t) => {
   switch (t) {
     case 'github':
-      return <a href='http://github.com/retroverse'> {t} </a>
+      return <a href='http://github.com/retroverse'>{t}</a>
     case 'twitter':
-      return <a href='http://twitter.com/giraughing'> {t} </a>
+      return <a href='http://twitter.com/giraughing'>{t}</a>
+    case 'itch.io':
+      return <a href='https://tdos.itch.io'>{t}</a>
     default:
-      return <a> {t} </a>
+      return <a>{t}</a>
   }
 }
 
