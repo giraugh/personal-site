@@ -1,5 +1,5 @@
 import {SkillItem, ProfileData, EducationItem, ProjectItem, EmploymentItem} from './profileData-t'
-const homePageImagesURL = 'http://retroverse.github.io/homepage-resources/img'
+const homePageImagesURL = 'http://giraugh.github.io/homepage-resources/img'
 
 export const skills : SkillItem[] = [
   {
