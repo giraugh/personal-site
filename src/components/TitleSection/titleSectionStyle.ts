@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 55vh;
   overflow: hidden;
+
+  @media (min-width: 750px) {
+    height: 65vh;
+  }
 
   @media (min-width: 1000px) {
     width: 80%;
@@ -18,14 +22,14 @@ export const ContentPair = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 3.5em;
+  font-size: 3.6em;
   font-family: ${(p) => p.theme.primaryFont};
   color: white;
   height: max-content;
   justify-self: start;
   margin-top: 55%;
 
-  @media (min-width: 800px) {
+  @media (min-width: 750px) {
     color: ${(p) => p.theme.secondaryBlueDark};
     align-self: start;
     margin-top: 30%;

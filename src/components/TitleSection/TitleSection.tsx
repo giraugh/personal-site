@@ -39,7 +39,6 @@ const TitleSection: React.FC = () => {
   const updatePosition = () => {
     if (titleRef.current) {
       const titleRect = titleRef.current.getBoundingClientRect()
-      console.log(titleRect)
       setTitlePos({
         x: titleRect.left + titleRect.width / 2,
         y: titleRect.top + titleRect.height / 2,
