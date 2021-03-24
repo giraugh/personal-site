@@ -1,9 +1,0 @@
-.subtitle {
-  --title-col: #383838;
-
-  font-size: 2.5em;
-  margin-bottom: .1em;
-  font-family: 'Archivo Narrow';
-
-  color: var(--title-col);
-}

@@ -1,47 +1,51 @@
 {
-  "name": "ebreakey-hpage",
-  "version": "1.0.0",
-  "description": "Ewan Breakey's home page.",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel public/index.html",
-    "build": "parcel build public/index.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/giraugh/giraugh.github.io.git"
-  },
-  "keywords": [
-    "homepage",
-    "giraugh",
-    "retroverse",
-    "ewan",
-    "breakey",
-    "ewan",
-    "breakey",
-    "react"
-  ],
-  "author": "Ewan Breakey",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/giraugh/giraugh.github.io/issues"
-  },
-  "homepage": "https://github.com/giraugh/giraugh.github.io#readme",
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.9.0",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.12.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "typescript": "^3.4.5"
-  },
+  "name": "personal-site",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "static": "^2.0.0"
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^12.20.6",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.2.3",
+    "web-vitals": "^1.1.1"
   },
-  "parcel-plugin-static": {
-    "source": "static",
-    "destination": "static"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
   }
 }
