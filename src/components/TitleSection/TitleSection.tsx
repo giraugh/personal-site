@@ -11,6 +11,16 @@ import {
   TitleSVG,
 } from './titleSectionStyle'
 
+const updatePositionFromRef = (ref, setPosition, center = true) => {
+  if (ref.current) {
+    const titleRect = ref.current.getClientRects()[0]
+    setPosition({
+      x: titleRect.left + (center ? titleRect.width / 2 : 0),
+      y: titleRect.top + (center ? titleRect.height / 2 : 0) + document.documentElement.scrollTop,
+    })
+  }
+}
+
 const GiraffeImage = React.forwardRef((props, ref) => (
   <TitleImageWrapper>
     <TitleImage
@@ -40,16 +50,7 @@ const TitleSection: React.FC = () => {
   const [titlePos, setTitlePos] = useState()
   const titleRef = useRef(null)
 
-  const updatePosition = () => {
-    if (titleRef.current) {
-      const titleRect = titleRef.current.getBoundingClientRect()
-      setTitlePos({
-        x: titleRect.left + titleRect.width / 2,
-        y: titleRect.top + titleRect.height / 2,
-      })
-    }
-  }
-
+  const updatePosition = () => updatePositionFromRef(titleRef, setTitlePos)
   useLayoutEffect(() => {
     window.addEventListener('resize', updatePosition)
     updatePosition()

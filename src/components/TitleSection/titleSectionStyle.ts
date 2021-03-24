@@ -12,6 +12,10 @@ export const Container = styled.div`
   @media (min-width: 1000px) {
     width: 80%;
   }
+
+  @media (max-height: 670px) {
+    height: min(max(60vh, 100vw), 500px);
+  }
 `
 
 export const ContentPair = styled.div`
@@ -39,6 +43,10 @@ export const Title = styled.h1`
 
   @media (min-width: 1800px) {
     font-size: 8em;
+  }
+
+  @media (max-height: 670px) {
+    font-size: 2.8em;
   }
 `
 
@@ -68,5 +76,11 @@ export const TitleSVG = styled.svg`
 
   @media (min-width: 750px) {
     visibility: hidden;
+  }
+
+  & > path {
+    @media (max-height: 670px) {
+      stroke-width: 250px;
+    }
   }
 `
