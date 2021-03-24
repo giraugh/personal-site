@@ -13,7 +13,11 @@ import {
 
 const GiraffeImage = React.forwardRef((props, ref) => (
   <TitleImageWrapper>
-    <TitleImage ref={ref} src={`${process.env.PUBLIC_URL}/giraffe.svg`} />
+    <TitleImage
+      alt="A giraffe with cool sunglasses"
+      ref={ref}
+      src={`${process.env.PUBLIC_URL}/giraffe.svg`}
+    />
   </TitleImageWrapper>
 ))
 

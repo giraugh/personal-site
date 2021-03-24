@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  height: 55vh;
+  height: min(max(55vh, 100vw), 550px);
   overflow: hidden;
 
   @media (min-width: 750px) {

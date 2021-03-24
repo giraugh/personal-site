@@ -7,6 +7,7 @@ export const Container = styled.div`
   letter-spacing: 0.05em;
   font-size: 1.05em;
   color: ${(p) => p.theme.bodyText};
+  margin-top: 20px;
 
   & > p + p {
     margin-top: 20px;
