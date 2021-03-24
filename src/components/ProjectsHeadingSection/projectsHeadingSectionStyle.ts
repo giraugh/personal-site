@@ -37,12 +37,20 @@ export const HeadingImageWrapper = styled.div`
   @media (max-width: 520px) {
     left: -25px;
   }
+
+  @media (min-width: 900px) {
+    width: 400px;
+  }
 `
 
 export const HeadingImage = styled.img`
   transform: scaleX(-1) rotate(15deg);
   position: relative;
   left: 11%;
+
+  @media (min-width: 900px) {
+    top: -20%;
+  }
 `
 
 export const Heading = styled.h2`
