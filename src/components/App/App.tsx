@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from '../../config/theme'
 import TitleSection from '../TitleSection/TitleSection'
 import BioSection from '../BioSection/BioSection'
+import ProjectsHeadingSection from '../ProjectsHeadingSection/ProjectsHeadingSection'
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <TitleSection />
         <BioSection />
+        <ProjectsHeadingSection />
       </ThemeProvider>
     </div>
   )
