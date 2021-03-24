@@ -2,10 +2,13 @@ import React from 'react'
 
 import {
   Heading,
+  HeadingWrapper,
+  HeadingDescription,
   Container,
   HeadingImageWrapper,
   HeadingImage,
 } from './projectsHeadingSectionStyle'
+import { projectsDescription } from '../../config/strings'
 
 const SnakeImage = React.forwardRef((props, ref) => (
   <HeadingImageWrapper>
@@ -20,7 +23,10 @@ const SnakeImage = React.forwardRef((props, ref) => (
 const ProjectsHeadingSection: React.FC = () => {
   return (
     <Container>
-      <Heading>Projects</Heading>
+      <HeadingWrapper>
+        <Heading>Projects</Heading>
+        <HeadingDescription>{projectsDescription}</HeadingDescription>
+      </HeadingWrapper>
       <SnakeImage />
     </Container>
   )
