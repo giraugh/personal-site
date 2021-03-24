@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100%;
   height: 80vh;
   overflow: hidden;
+
+  @media (min-width: 1000px) {
+    width: 80%;
+  }
 `
 
 export const ContentPair = styled.div`
@@ -21,12 +25,12 @@ export const Title = styled.h1`
   justify-self: start;
   margin-top: 55%;
 
-  @media (min-width: 750px) {
+  @media (min-width: 800px) {
     color: ${(p) => p.theme.secondaryBlueDark};
     align-self: start;
     margin-top: 30%;
     margin-left: 35%;
-    font-size: 5em;
+    font-size: 6em;
   }
 
   @media (min-width: 1800px) {

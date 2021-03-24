@@ -17,7 +17,7 @@ const GiraffeImage = React.forwardRef((props, ref) => (
   </TitleImageWrapper>
 ))
 
-const ColourBlob = ({ toPos }) => {
+const ColourBlobPath = ({ toPos }) => {
   const fromPos = { x: 0, y: 0 }
   const toOffset = { x: -15, y: 0 }
   return (
@@ -55,7 +55,7 @@ const TitleSection: React.FC = () => {
 
   return (
     <Container>
-      {titlePos && <ColourBlob toPos={titlePos} />}
+      {titlePos && <ColourBlobPath toPos={titlePos} />}
       <ContentPair>
         <GiraffeImage />
         <Title ref={titleRef}>
