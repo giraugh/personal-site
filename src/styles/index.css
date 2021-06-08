@@ -1,0 +1,27 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: arial;
+
+  --primary-col: #7ba6d2;
+  --secondary-col: #4d82ac;
+  --shadow-out-col: #0000003d;
+  --shadow-in-col: #0000005c;
+
+  --title-col: #4d82ac;
+
+  --headings-height: 50px;
+  --profile-picture-size: 15em;
+  --profile-picture-margin: 20px;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}

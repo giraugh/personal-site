@@ -1,0 +1,78 @@
+.project-list {
+  width: 100%;
+  height: min-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 15px;
+  column-gap: 15px;
+
+  --project-col: var(--primary-col);
+}
+
+.project {
+  display: grid;
+  grid-template-rows: 10fr 1fr 2fr;
+  row-gap: 3px;
+  height: 300px;
+  width: 100%;
+  padding: 7px;
+
+  /* For link to work correctly */
+  position: relative;
+
+  color: white;
+  border-radius: 7px;
+  background-color: var(--project-col);
+  box-shadow: 0px 4.5px 1.2px -1px var(--shadow-out-col);
+  transition-duration: .05s;
+  transition-property: box-shadow, margin-top, background-color;
+}
+
+.project > .project-link > .link-spanner {
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.project > .project-image {
+  width: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  box-shadow: inset 0px 0px 3px 0.5px var(--shadow-in-col);
+  background-size: cover;
+}
+
+.project > .project-title {
+  display: block;
+  font-size: 1.4em;
+  margin-top: 3px;
+
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.project.linked:hover {
+  box-shadow: -1px 5.6px 2.5px -1px var(--shadow-out-col);
+  margin-top: -1px;
+}
+
+.project.linked:active {
+  background-color: var(--secondary-col);
+}
+
+.project.linked:hover > .project-title {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 700px) {
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  .project {
+    height: 270px;
+  }
+}

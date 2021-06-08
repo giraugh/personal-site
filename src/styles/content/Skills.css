@@ -1,0 +1,70 @@
+.skill-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+
+.skills-description {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.skills-description > p {
+  font-family: 'Lato', sans-serif;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  height: 3em;
+  align-items: center;
+  
+  background-color: var(--primary-col);
+  border-radius: 5px;
+  box-shadow: 0px 3.5px 1.2px -1px var(--shadow-out-col);
+}
+
+.skill-name {
+  margin-left: 10px;
+  font-size: 25px;
+  font-family: arial;
+  color: white;
+  font-weight: bold;
+}
+
+.skill > .skill-ability-label {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: middle;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: var(--secondary-col);
+  box-shadow: inset 3px 0px 3px -2px var(--shadow-in-col);
+}
+
+.skill-ability-label > span {
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+}
+
+@media screen and (max-width: 650px) {
+  .skill-ability-label {
+    display: none !important;
+  }
+  .skill {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .skill-name {
+    font-size: 20px;
+  }
+}
